@@ -1,0 +1,758 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客 — HUGO | 冯江威品牌设计作品集</title>
+    <meta name="description" content="冯江威 (HUGO) 设计博客，分享设计教程、行业见解和AIGC应用心得。">
+    <link rel="preconnect" href="https://fonts.loli.net" crossorigin>
+    <link href="https://fonts.loli.net/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <style>
+        /* ========== Page Hero ========== */
+        .page-hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 140px 48px 60px;
+            overflow: hidden;
+        }
+
+        .page-hero-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+        }
+
+        .page-hero-bg .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: orbFloat 12s ease-in-out infinite;
+        }
+
+        .page-hero-bg .orb-1 {
+            width: 500px; height: 500px;
+            background: rgba(78, 205, 196, 0.1);
+            top: -10%; right: -10%;
+            animation-delay: 0s;
+        }
+
+        .page-hero-bg .orb-2 {
+            width: 400px; height: 400px;
+            background: rgba(233, 69, 160, 0.08);
+            bottom: -10%; left: -5%;
+            animation-delay: -4s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -40px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .page-hero-label {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-magenta);
+            margin-bottom: 16px;
+        }
+
+        .page-hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ========== Blog Container ========== */
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px 80px;
+        }
+
+        /* ========== Category Filter ========== */
+        .blog-filters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+            justify-content: center;
+        }
+
+        .blog-filter-btn {
+            padding: 10px 24px;
+            border-radius: 100px;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-secondary);
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .blog-filter-btn:hover,
+        .blog-filter-btn.active {
+            background: var(--gradient-main);
+            border-color: transparent;
+            color: #fff;
+        }
+
+        /* ========== Featured Article ========== */
+        .featured-article {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 64px;
+            padding: 32px;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            transition: var(--transition);
+        }
+
+        .featured-article:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .featured-image {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 16/10;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .featured-article:hover .featured-image img {
+            transform: scale(1.05);
+        }
+
+        .featured-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 100px;
+            background: rgba(233, 69, 160, 0.1);
+            border: 1px solid rgba(233, 69, 160, 0.2);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent-magenta);
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+
+        .featured-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            transition: var(--transition);
+        }
+
+        .featured-article:hover .featured-title {
+            color: var(--accent-magenta);
+        }
+
+        .featured-excerpt {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .featured-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ========== Blog Grid ========== */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        /* ========== Blog Card ========== */
+        .blog-card {
+            display: block;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .blog-card .bc-image {
+            width: 100%;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+
+        .blog-card .bc-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover .bc-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-card .bc-content {
+            padding: 24px;
+        }
+
+        .blog-card .bc-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 100px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .bc-tag.tag-tutorial {
+            background: rgba(78, 205, 196, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(78, 205, 196, 0.2);
+        }
+
+        .bc-tag.tag-insight {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent-purple);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .bc-tag.tag-aigc {
+            background: rgba(233, 69, 160, 0.1);
+            color: var(--accent-magenta);
+            border: 1px solid rgba(233, 69, 160, 0.2);
+        }
+
+        .blog-card .bc-title {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            transition: var(--transition);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .blog-card:hover .bc-title {
+            color: var(--accent-magenta);
+        }
+
+        .blog-card .bc-excerpt {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .blog-card .bc-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .bc-meta-date {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bc-meta-read {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* ========== Subscribe CTA ========== */
+        .subscribe-cta {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px 120px;
+        }
+
+        .subscribe-inner {
+            padding: 60px;
+            border-radius: var(--radius-lg);
+            background: var(--gradient-card);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            text-align: center;
+        }
+
+        .subscribe-inner h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .subscribe-inner p {
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            font-size: 1rem;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 12px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .subscribe-input {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 100px;
+            background: var(--bg-primary);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .subscribe-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .subscribe-input:focus {
+            border-color: var(--accent-purple);
+        }
+
+        .subscribe-btn {
+            padding: 14px 28px;
+            border-radius: 100px;
+            background: var(--gradient-main);
+            color: #fff;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .subscribe-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(233, 69, 160, 0.3);
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 120px 24px 40px;
+            }
+
+            .blog-container {
+                padding: 0 24px 60px;
+            }
+
+            .subscribe-cta {
+                padding: 0 24px 80px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-article {
+                padding: 20px;
+                gap: 24px;
+            }
+
+            .subscribe-inner {
+                padding: 40px 24px;
+            }
+
+            .subscribe-form {
+                flex-direction: column;
+            }
+
+            .blog-filters {
+                gap: 8px;
+            }
+
+            .blog-filter-btn {
+                padding: 8px 18px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+        <a href="index.html" onclick="closeMobileMenu()">首页</a>
+        <a href="projects.html" onclick="closeMobileMenu()">作品集</a>
+        <a href="about.html" onclick="closeMobileMenu()">关于我</a>
+        <a href="services.html" onclick="closeMobileMenu()">服务</a>
+        <a href="blog.html" onclick="closeMobileMenu()">博客</a>
+        <a href="index.html#contact" onclick="closeMobileMenu()">联系</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-media">
+                <video src="assets/logo.mp4" autoplay muted playsinline></video>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="projects.html">作品集</a></li>
+            <li><a href="about.html">关于我</a></li>
+            <li><a href="services.html">服务</a></li>
+            <li><a href="blog.html" class="active">博客</a></li>
+            <li><a href="index.html#contact">联系</a></li>
+        </ul>
+        <div class="nav-menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-bg">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+        </div>
+        <div class="page-hero-content reveal">
+            <div class="page-hero-label">Blog</div>
+            <h1 class="page-hero-title">设计博客</h1>
+            <p class="page-hero-desc">
+                分享设计心得、行业洞察与AIGC前沿探索，<br>记录设计师的成长之路。
+            </p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <div class="blog-container">
+
+        <!-- Category Filters -->
+        <div class="blog-filters reveal">
+            <button class="blog-filter-btn active" data-filter="all">全部文章</button>
+            <button class="blog-filter-btn" data-filter="tutorial">设计教程</button>
+            <button class="blog-filter-btn" data-filter="insight">行业见解</button>
+            <button class="blog-filter-btn" data-filter="aigc">AIGC</button>
+        </div>
+
+        <!-- Featured Article -->
+        <div class="featured-article reveal" data-category="aigc">
+            <div class="featured-image">
+                <img src="assets/other/64.jpg" alt="AIGC赋能设计" loading="lazy">
+            </div>
+            <div class="featured-content">
+                <div class="featured-badge">&#9733; 精选文章</div>
+                <h2 class="featured-title">AIGC如何重塑品牌设计工作流：从Midjourney到商业落地的全链路实践</h2>
+                <p class="featured-excerpt">
+                    深入探讨AIGC技术在品牌设计中的实际应用，从创意构思、视觉生成到后期精修的完整工作流。分享我在实际项目中使用Midjourney和Stable Diffusion的经验与心得，以及如何将AI生成的内容转化为可交付的商业设计成果。
+                </p>
+                <div class="featured-meta">
+                    <span>2024-12-15</span>
+                    <span>8 分钟阅读</span>
+                    <span>AIGC</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Grid -->
+        <div class="blog-grid" id="blogGrid">
+
+            <!-- Article 1 -->
+            <article class="blog-card reveal" data-category="tutorial">
+                <div class="bc-image">
+                    <img src="assets/edu/03.jpg" alt="品牌LOGO设计" loading="lazy">
+                </div>
+                <div class="bc-content">
+                    <span class="bc-tag tag-tutorial">设计教程</span>
+                    <h3 class="bc-title">从零开始构建教育品牌VI系统：完整设计流程拆解</h3>
+                    <p class="bc-excerpt">以优漫教育品牌设计为实际案例，详细拆解品牌VI系统从调研、策略到设计执行的完整流程，分享每个环节的关键决策点。</p>
+                    <div class="bc-meta">
+                        <span class="bc-meta-date">2024-11-20</span>
+                        <span class="bc-meta-read">6 分钟阅读</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="blog-card reveal" data-category="aigc">
+                <div class="bc-image">
+                    <img src="assets/edu/30.jpg" alt="AIGC节气海报" loading="lazy">
+                </div>
+                <div class="bc-content">
+                    <span class="bc-tag tag-aigc">AIGC</span>
+                    <h3 class="bc-title">AIGC节气海报创作指南：用AI讲好中国传统文化故事</h3>
+                    <p class="bc-excerpt">分享如何运用Midjourney创作二十四节气系列海报，将传统文化意象与AI生成技术完美结合的实战经验。</p>
+                    <div class="bc-meta">
+                        <span class="bc-meta-date">2024-10-08</span>
+                        <span class="bc-meta-read">5 分钟阅读</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="blog-card reveal" data-category="insight">
+                <div class="bc-image">
+                    <img src="assets/auto/40.jpg" alt="汽车品牌设计" loading="lazy">
+                </div>
+                <div class="bc-content">
+                    <span class="bc-tag tag-insight">行业见解</span>
+                    <h3 class="bc-title">汽车后市场品牌视觉升级：如何用设计传递产品科技感</h3>
+                    <p class="bc-excerpt">以浦诺菲、万顺新材等汽车膜品牌为例，分析汽车后市场品牌视觉设计的核心要点和趋势走向。</p>
+                    <div class="bc-meta">
+                        <span class="bc-meta-date">2024-09-15</span>
+                        <span class="bc-meta-read">7 分钟阅读</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 4 -->
+            <article class="blog-card reveal" data-category="tutorial">
+                <div class="bc-image">
+                    <img src="assets/edu/07.jpg" alt="IP形象设计" loading="lazy">
+                </div>
+                <div class="bc-content">
+                    <span class="bc-tag tag-tutorial">设计教程</span>
+                    <h3 class="bc-title">品牌IP形象设计全攻略：从概念到版权登记</h3>
+                    <p class="bc-excerpt">以U仔IP形象设计为例，系统讲解品牌IP角色设计的完整流程，包括角色设定、视觉设计、3D呈现和版权保护。</p>
+                    <div class="bc-meta">
+                        <span class="bc-meta-date">2024-08-22</span>
+                        <span class="bc-meta-read">8 分钟阅读</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 5 -->
+            <article class="blog-card reveal" data-category="insight">
+                <div class="bc-image">
+                    <img src="assets/ecom/54.jpg" alt="电商设计" loading="lazy">
+                </div>
+                <div class="bc-content">
+                    <span class="bc-tag tag-insight">行业见解</span>
+                    <h3 class="bc-title">国潮风在电商设计中的应用：当传统文化遇见美妆品牌</h3>
+                    <p class="bc-excerpt">探讨国潮风格在电商促销设计中的应用策略，分析如何将传统文化元素与现代品牌调性有机融合。</p>
+                    <div class="bc-meta">
+                        <span class="bc-meta-date">2024-07-10</span>
+                        <span class="bc-meta-read">5 分钟阅读</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 6 -->
+            <article class="blog-card reveal" data-category="aigc">
+                <div class="bc-image">
+                    <img src="assets/other/65.jpg" alt="3D设计" loading="lazy">
+                </div>
+                <div class="bc-content">
+                    <span class="bc-tag tag-aigc">AIGC</span>
+                    <h3 class="bc-title">3D拟物化设计新趋势：Blender + AIGC的创意化学反应</h3>
+                    <p class="bc-excerpt">探索3D拟物化风格在平面设计中的创新应用，分享Blender建模与AIGC辅助创作的协作经验。</p>
+                    <div class="bc-meta">
+                        <span class="bc-meta-date">2024-06-18</span>
+                        <span class="bc-meta-read">6 分钟阅读</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+    <!-- Subscribe CTA -->
+    <div class="subscribe-cta">
+        <div class="subscribe-inner reveal">
+            <h3>订阅设计资讯</h3>
+            <p>第一时间获取最新设计文章、行业洞察和AIGC应用心得。</p>
+            <div class="subscribe-form">
+                <input type="email" class="subscribe-input" placeholder="输入您的邮箱地址" id="subscribeEmail">
+                <button class="subscribe-btn" onclick="handleSubscribe()">订阅</button>
+            </div>
+            <div id="subscribeMsg" style="margin-top: 12px; font-size: 0.85rem; color: var(--accent-cyan); display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-left">
+            <span class="brand">HUGO</span> &nbsp;|&nbsp; 設計作品集 &nbsp;|&nbsp; Copyright&copy; 2024 冯江威 All rights reserved.
+        </div>
+        <div class="footer-right">
+            <a href="index.html">返回首页</a>
+        </div>
+    </footer>
+
+    <script src="assets/js/common.js"></script>
+    <script>
+        // ========== Blog Filter ==========
+        const filterBtns = document.querySelectorAll('.blog-filter-btn');
+        const blogCards = document.querySelectorAll('.blog-card');
+        const featuredArticle = document.querySelector('.featured-article');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                // Filter blog cards
+                blogCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = '';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 400);
+                    }
+                });
+
+                // Show/hide featured article
+                if (featuredArticle) {
+                    if (filter === 'all' || featuredArticle.dataset.category === filter) {
+                        featuredArticle.style.display = '';
+                        featuredArticle.style.opacity = '0';
+                        setTimeout(() => {
+                            featuredArticle.style.opacity = '1';
+                        }, 50);
+                    } else {
+                        featuredArticle.style.opacity = '0';
+                        setTimeout(() => {
+                            featuredArticle.style.display = 'none';
+                        }, 400);
+                    }
+                }
+            });
+        });
+
+        // ========== Subscribe Handler ==========
+        function handleSubscribe() {
+            const email = document.getElementById('subscribeEmail').value.trim();
+            const msgEl = document.getElementById('subscribeMsg');
+
+            if (!email) {
+                msgEl.style.display = 'block';
+                msgEl.style.color = 'var(--accent-magenta)';
+                msgEl.textContent = '请输入邮箱地址';
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                msgEl.style.display = 'block';
+                msgEl.style.color = 'var(--accent-magenta)';
+                msgEl.textContent = '请输入有效的邮箱地址';
+                return;
+            }
+
+            msgEl.style.display = 'block';
+            msgEl.style.color = 'var(--accent-cyan)';
+            msgEl.textContent = '订阅成功！感谢您的关注。';
+            document.getElementById('subscribeEmail').value = '';
+        }
+    </script>
+</body>
+</html>

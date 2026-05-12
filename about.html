@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 - HUGO 设计师</title>
+    <meta name="description" content="冯江威 (HUGO)，品牌设计师/新媒体设计师/AIGC应用设计师，4-5年设计经验，专注品牌视觉设计与AIGC创意应用。">
+    <link rel="preconnect" href="https://fonts.loli.net">
+    <link rel="preconnect" href="https://gstatic.loli.net" crossorigin>
+    <link href="https://fonts.loli.net/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <style>
+        /* ========== 全局变量 ========== */
+        :root {
+            --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #111118;
+            --bg-card: rgba(255, 255, 255, 0.02);
+            --text-primary: #f5f5f7;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-muted: rgba(255, 255, 255, 0.4);
+            --accent-cyan: #4ecdc4;
+            --accent-purple: #8b5cf6;
+            --accent-magenta: #e945a0;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* ========== Hero Section ========== */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 48px 80px;
+            background: var(--bg-primary);
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .hero-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1;
+            color: var(--text-primary);
+            letter-spacing: -2px;
+        }
+
+        .hero-title .en {
+            display: block;
+            font-weight: 300;
+            font-size: 0.5em;
+            letter-spacing: 8px;
+            margin-top: 8px;
+            color: var(--text-secondary);
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+        }
+
+        .hero-slogan {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 480px;
+            margin-top: 16px;
+        }
+
+        /* ========== Hero Card ========== */
+        .hero-card {
+            width: 340px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            position: relative;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .hero-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-card-img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            border-radius: var(--radius-md);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .hero-card-info {
+            text-align: center;
+        }
+
+        .hero-card-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .hero-card-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ========== Floating Tags ========== */
+        .floating-tags {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .float-tag {
+            position: absolute;
+            padding: 10px 20px;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            pointer-events: auto;
+            cursor: default;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .float-tag:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(139, 92, 246, 0.4);
+            color: var(--text-primary);
+            transform: scale(1.05);
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2);
+        }
+
+        .float-tag.tag-1 {
+            top: -20px;
+            left: -60px;
+            animation: float1 5s ease-in-out infinite;
+        }
+
+        .float-tag.tag-2 {
+            top: 40px;
+            right: -80px;
+            animation: float2 6s ease-in-out infinite;
+            animation-delay: -1s;
+        }
+
+        .float-tag.tag-3 {
+            top: 50%;
+            left: -100px;
+            transform: translateY(-50%);
+            animation: float3 7s ease-in-out infinite;
+            animation-delay: -2s;
+        }
+
+        .float-tag.tag-4 {
+            bottom: 100px;
+            right: -90px;
+            animation: float4 5.5s ease-in-out infinite;
+            animation-delay: -3s;
+        }
+
+        .float-tag.tag-5 {
+            bottom: -10px;
+            left: -40px;
+            animation: float5 6.5s ease-in-out infinite;
+            animation-delay: -4s;
+        }
+
+        .float-tag.tag-6 {
+            bottom: 40px;
+            right: -70px;
+            animation: float6 5s ease-in-out infinite;
+            animation-delay: -2.5s;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-12px) translateX(5px); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(10px) translateX(-8px); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(calc(-50% - 10px)) translateX(8px); }
+        }
+
+        @keyframes float4 {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-8px) translateX(-10px); }
+        }
+
+        @keyframes float5 {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(12px) translateX(5px); }
+        }
+
+        @keyframes float6 {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-10px) translateX(-5px); }
+        }
+
+        /* ========== Info Grid ========== */
+        .info-section {
+            padding: 80px 48px;
+            background: var(--bg-primary);
+        }
+
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .info-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-md);
+            padding: 32px 24px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .info-item:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .info-value {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        /* ========== Timeline Section ========== */
+        .timeline-section {
+            padding: 100px 48px;
+            background: var(--bg-secondary);
+        }
+
+        .section-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple), var(--accent-magenta));
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 48px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -36px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 2px solid var(--accent-cyan);
+        }
+
+        .timeline-item:nth-child(2) .timeline-dot {
+            border-color: var(--accent-purple);
+        }
+
+        .timeline-item:nth-child(3) .timeline-dot {
+            border-color: var(--accent-magenta);
+        }
+
+        .timeline-date {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .timeline-content .company {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .timeline-content .desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ========== Education Section ========== */
+        .education-section {
+            padding: 100px 48px;
+            background: var(--bg-primary);
+        }
+
+        .education-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .education-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .education-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .education-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .education-content {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 2;
+        }
+
+        .education-content p {
+            margin-bottom: 16px;
+        }
+
+        .education-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========== Story Section ========== */
+        .story-section {
+            padding: 100px 48px;
+            background: var(--bg-secondary);
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .story-text {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 2.2;
+            margin-bottom: 32px;
+        }
+
+        .story-text:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========== Philosophy Section ========== */
+        .philosophy-section {
+            padding: 100px 48px;
+            background: var(--bg-primary);
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .philosophy-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            transition: var(--transition);
+        }
+
+        .philosophy-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-8px);
+        }
+
+        .philosophy-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-sm);
+            background: rgba(78, 205, 196, 0.08);
+            border: 1px solid rgba(78, 205, 196, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .philosophy-card:nth-child(2) .philosophy-icon {
+            background: rgba(139, 92, 246, 0.08);
+            border-color: rgba(139, 92, 246, 0.15);
+        }
+
+        .philosophy-card:nth-child(3) .philosophy-icon {
+            background: rgba(233, 69, 160, 0.08);
+            border-color: rgba(233, 69, 160, 0.15);
+        }
+
+        .philosophy-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--accent-cyan);
+        }
+
+        .philosophy-card:nth-child(2) .philosophy-icon svg {
+            stroke: var(--accent-purple);
+        }
+
+        .philosophy-card:nth-child(3) .philosophy-icon svg {
+            stroke: var(--accent-magenta);
+        }
+
+        .philosophy-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .philosophy-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ========== Skills Section ========== */
+        .skills-section {
+            padding: 100px 48px;
+            background: var(--bg-secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .skill-info {
+            flex: 1;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .skill-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .skill-percent {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            width: 0;
+            transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* ========== CTA Section ========== */
+        .cta-section {
+            padding: 100px 48px;
+            background: var(--bg-primary);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .cta-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 48px;
+                text-align: center;
+            }
+
+            .hero-card {
+                width: 280px;
+                margin: 0 auto;
+            }
+
+            .float-tag {
+                font-size: 0.75rem;
+                padding: 8px 14px;
+            }
+
+            .float-tag.tag-1 { left: -30px; }
+            .float-tag.tag-2 { right: -40px; }
+            .float-tag.tag-3 { left: -50px; }
+            .float-tag.tag-4 { right: -45px; }
+            .float-tag.tag-5 { left: -20px; }
+            .float-tag.tag-6 { right: -35px; }
+
+            .hero-slogan {
+                margin: 0 auto;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section,
+            .info-section,
+            .timeline-section,
+            .education-section,
+            .story-section,
+            .philosophy-section,
+            .skills-section,
+            .cta-section {
+                padding: 60px 24px;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .info-item {
+                padding: 24px 16px;
+            }
+
+            .info-value {
+                font-size: 1.5rem;
+            }
+
+            .timeline {
+                padding-left: 24px;
+            }
+
+            .timeline-dot {
+                left: -28px;
+                width: 12px;
+                height: 12px;
+            }
+
+            .education-card {
+                padding: 32px 24px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-item {
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+        <a href="index.html" onclick="closeMobileMenu()">首页</a>
+        <a href="projects.html" onclick="closeMobileMenu()">作品集</a>
+        <a href="about.html" onclick="closeMobileMenu()">关于我</a>
+        <a href="services.html" onclick="closeMobileMenu()">服务</a>
+        <a href="blog.html" onclick="closeMobileMenu()">博客</a>
+        <a href="index.html#contact" onclick="closeMobileMenu()">联系</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-media">
+                <video src="assets/logo.mp4" autoplay muted playsinline></video>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="projects.html">作品集</a></li>
+            <li><a href="about.html" class="active">关于我</a></li>
+            <li><a href="services.html">服务</a></li>
+            <li><a href="blog.html">博客</a></li>
+            <li><a href="index.html#contact">联系</a></li>
+        </ul>
+        <div class="nav-menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content reveal">
+                <div class="hero-label">About Me</div>
+                <h1 class="hero-title">
+                    冯江威
+                    <span class="en">HUGO</span>
+                </h1>
+                <p class="hero-subtitle">Brand & AIGC / 品牌新媒体设计师</p>
+                <p class="hero-slogan">用设计连接品牌与用户，以创意驱动商业价值</p>
+            </div>
+            <div class="hero-card reveal">
+                <img class="hero-card-img" src="assets/avatar.jpg" alt="冯江威 HUGO">
+                <div class="hero-card-info">
+                    <div class="hero-card-name">冯江威</div>
+                    <div class="hero-card-title">HUGO / 品牌设计师</div>
+                </div>
+                <div class="floating-tags" id="floatingTags">
+                    <span class="float-tag tag-1">品牌设计&策划</span>
+                    <span class="float-tag tag-2">AI商业设计师</span>
+                    <span class="float-tag tag-3">新媒体视觉</span>
+                    <span class="float-tag tag-4">IP形象设计</span>
+                    <span class="float-tag tag-5">电商视觉</span>
+                    <span class="float-tag tag-6">AIGC创意应用</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Grid -->
+    <section class="info-section">
+        <div class="info-container">
+            <div class="info-grid reveal">
+                <div class="info-item">
+                    <div class="info-value">广州</div>
+                    <div class="info-label">所在城市</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-value">4-5年</div>
+                    <div class="info-label">工作经验</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-value">50+</div>
+                    <div class="info-label">服务客户</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-value">60+</div>
+                    <div class="info-label">完成项目</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <div class="section-label">Experience</div>
+                <h2 class="section-title">工作经历</h2>
+            </div>
+            <div class="timeline reveal">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2025.02 - 至今</div>
+                    <div class="timeline-content">
+                        <h3>品牌设计师 / 设计经理</h3>
+                        <p class="company">上海商睿智能科技有限公司</p>
+                        <p class="desc">统筹负责全公司的品牌宣传设计等多个设计项目，把控品牌视觉方向，带领设计团队完成核心品牌体系建设与传播物料输出。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2023.02 - 2024.11</div>
+                    <div class="timeline-content">
+                        <h3>品牌设计师 / 新媒体运营设计师</h3>
+                        <p class="company">广州云创软件有限公司</p>
+                        <p class="desc">负责教育品牌视觉设计（VIS系统、IP形象设计），短视频拍摄与剪辑，集团官网专题项目策划。从0-1搭建"U仔做设计"抖音及小红书账号，讲师个人IP 0-1品牌策划与运营。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2022.09 - 2022.12</div>
+                    <div class="timeline-content">
+                        <h3>平面设计师</h3>
+                        <p class="company">广州皓程生物科技有限公司</p>
+                        <p class="desc">负责宣传物料设计、LOGO/VI手册设计、新产品包装设计、方案撰写，团队协调对接，以及各类品牌/产品/企业文化设计输出。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education-section">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <div class="section-label">Education</div>
+                <h2 class="section-title">教育背景</h2>
+            </div>
+            <div class="education-card reveal">
+                <div class="education-header">
+                    <div class="education-icon">&#127891;</div>
+                    <h3 class="education-title">广告设计与制作专业</h3>
+                </div>
+                <div class="education-content">
+                    <p>广东理工学院 · 专科</p>
+                    <p>辅修数字媒体艺术设计。主修课程：视觉原理、版式设计、广告设计、设计史、广告心理学、FLASH动画等。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <div class="section-label">My Story</div>
+                <h2 class="section-title">我的故事</h2>
+            </div>
+            <div class="story-content reveal">
+                <p class="story-text">我是冯江威，设计圈内以"HUGO"为人所知。与设计的缘分，始于大学时期对视觉艺术的浓厚兴趣。那时候，我常常在课余时间研究各种品牌案例，拆解它们的LOGO、色彩搭配和版式布局，试图理解优秀设计背后的逻辑与美学。</p>
+                <p class="story-text">毕业后，我正式踏入设计行业，先后在广州皓程和广州云创两家公司任职。在广州皓程的半年里，我快速积累了电商设计实战经验，学会了如何在商业需求与视觉美感之间找到平衡点。2023年加入广州云创后，我的设计视野得到了极大的拓展——从教育品牌的系统化VI设计，到汽车行业的产品视觉呈现，再到AIGC技术在设计领域的创新应用，每一个项目都让我对设计有了更深刻的理解。</p>
+                <p class="story-text">我始终相信，好的设计不仅仅是视觉上的美观，更是品牌战略的视觉化表达。每一个色彩的选择、每一个字体的运用、每一个版式的安排，都应该服务于品牌的核心价值和目标受众。这种设计理念贯穿在我所有的项目实践中。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy-section">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <div class="section-label">Philosophy</div>
+                <h2 class="section-title">设计理念</h2>
+            </div>
+            <div class="philosophy-grid reveal">
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="philosophy-title">策略先行</h3>
+                    <p class="philosophy-desc">设计不是凭空想象的艺术创作，而是基于品牌战略的视觉表达。每一次设计之前，我都会深入了解品牌定位、目标受众和市场竞争，确保设计方案有理有据、精准有效。</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3 class="philosophy-title">细节至上</h3>
+                    <p class="philosophy-desc">魔鬼藏在细节中。从字间距的微调到色彩饱和度的把控，每一个细节都影响着最终的设计品质。我追求像素级的精准，因为正是这些细节构成了卓越的设计体验。</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <line x1="12" y1="19" x2="12" y2="22"/>
+                        </svg>
+                    </div>
+                    <h3 class="philosophy-title">技术赋能</h3>
+                    <p class="philosophy-desc">拥抱AIGC等前沿技术，将AI工具融入设计工作流。技术不是替代创意，而是拓展创意的边界。通过人机协作，探索更多设计可能性，为品牌带来更具前瞻性的视觉方案。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <div class="section-label">Skills</div>
+                <h2 class="section-title">技能展示</h2>
+            </div>
+            <div class="skills-grid reveal">
+                <div class="skill-item">
+                    <div class="skill-icon">Ps</div>
+                    <div class="skill-info">
+                        <div class="skill-header">
+                            <span class="skill-name">Photoshop</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">Ai</div>
+                    <div class="skill-info">
+                        <div class="skill-header">
+                            <span class="skill-name">Illustrator</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">Mj</div>
+                    <div class="skill-info">
+                        <div class="skill-header">
+                            <span class="skill-name">Midjourney</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">SD</div>
+                    <div class="skill-info">
+                        <div class="skill-header">
+                            <span class="skill-name">Stable Diffusion</span>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">Fg</div>
+                    <div class="skill-info">
+                        <div class="skill-header">
+                            <span class="skill-name">Figma</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">Ae</div>
+                    <div class="skill-info">
+                        <div class="skill-header">
+                            <span class="skill-name">After Effects</span>
+                            <span class="skill-percent">70%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content reveal">
+            <h2 class="cta-title">期待与您合作</h2>
+            <p class="cta-desc">无论是品牌设计、新媒体视觉还是AIGC应用，我都乐于为您提供专业的设计服务。</p>
+            <a href="index.html#contact" class="cta-btn">联系我 &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">HUGO</div>
+            <p class="footer-text">&copy; 2024 HUGO. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/common.js"></script>
+    <script>
+        // Skill bars animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillFills = document.querySelectorAll('.skill-fill');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.dataset.width;
+                        entry.target.style.width = width + '%';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            skillFills.forEach(fill => observer.observe(fill));
+
+            // Floating tags hover interaction
+            const floatTags = document.querySelectorAll('.float-tag');
+            floatTags.forEach(tag => {
+                tag.addEventListener('mouseenter', () => {
+                    floatTags.forEach(t => {
+                        if (t !== tag) t.style.opacity = '0.3';
+                    });
+                });
+                tag.addEventListener('mouseleave', () => {
+                    floatTags.forEach(t => {
+                        t.style.opacity = '';
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

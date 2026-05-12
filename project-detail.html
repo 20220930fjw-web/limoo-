@@ -1,0 +1,911 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目详情 — HUGO | 冯江威品牌设计作品集</title>
+    <meta name="description" content="冯江威 (HUGO) 设计项目详情，查看品牌设计项目的完整介绍、设计过程和作品展示。">
+    <link rel="preconnect" href="https://fonts.loli.net" crossorigin>
+    <link href="https://fonts.loli.net/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <style>
+        /* ========== Detail Hero ========== */
+        .detail-hero {
+            position: relative;
+            padding: 120px 48px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .detail-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .detail-breadcrumb a {
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .detail-breadcrumb a:hover {
+            color: var(--accent-magenta);
+        }
+
+        .detail-breadcrumb .sep {
+            color: var(--text-muted);
+        }
+
+        .detail-breadcrumb .current {
+            color: var(--text-primary);
+        }
+
+        /* ========== Project Main Image ========== */
+        .detail-main-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 48px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .detail-main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ========== Project Info Bar ========== */
+        .detail-info-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+            padding: 32px;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* ========== Project Content ========== */
+        .detail-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        .detail-section {
+            margin-bottom: 64px;
+        }
+
+        .detail-section-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+        }
+
+        .detail-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 2;
+            max-width: 800px;
+        }
+
+        /* ========== Highlights ========== */
+        .highlights-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(139, 92, 246, 0.08);
+        }
+
+        .highlight-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--gradient-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: #fff;
+            margin-top: 2px;
+        }
+
+        .highlight-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ========== Image Gallery ========== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid rgba(139, 92, 246, 0.08);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item.wide {
+            grid-column: span 2;
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2;
+        }
+
+        /* ========== Related Projects ========== */
+        .related-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px 80px;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 32px;
+        }
+
+        .related-card {
+            display: block;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            transition: var(--transition);
+        }
+
+        .related-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .related-card .rc-image {
+            width: 100%;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+
+        .related-card .rc-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .related-card:hover .rc-image img {
+            transform: scale(1.05);
+        }
+
+        .related-card .rc-content {
+            padding: 20px;
+        }
+
+        .related-card .rc-category {
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+            margin-bottom: 6px;
+        }
+
+        .related-card .rc-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            transition: var(--transition);
+        }
+
+        .related-card:hover .rc-title {
+            color: var(--accent-magenta);
+        }
+
+        .related-card .rc-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* ========== Prev / Next Navigation ========== */
+        .prev-next-nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .pn-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 24px;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            transition: var(--transition);
+        }
+
+        .pn-card:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .pn-card .pn-image {
+            flex-shrink: 0;
+            width: 80px;
+            height: 60px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .pn-card .pn-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pn-card .pn-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+            margin-bottom: 4px;
+        }
+
+        .pn-card .pn-title {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .pn-card:hover .pn-title {
+            color: var(--accent-magenta);
+        }
+
+        .pn-card.next {
+            text-align: right;
+            flex-direction: row-reverse;
+        }
+
+        /* ========== Lightbox ========== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-size: 2rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 10001;
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .detail-hero {
+                padding: 100px 24px 0;
+            }
+
+            .detail-content {
+                padding: 0 24px;
+            }
+
+            .related-section {
+                padding: 0 24px 60px;
+            }
+
+            .prev-next-nav {
+                padding: 0 24px 60px;
+                grid-template-columns: 1fr;
+            }
+
+            .detail-info-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                padding: 24px;
+            }
+
+            .highlights-list {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item.wide {
+                grid-column: span 1;
+            }
+
+            .gallery-item.tall {
+                grid-row: span 1;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-main-image {
+                aspect-ratio: 4/3;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <img src="" alt="Preview" id="lightboxImg">
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+        <a href="index.html" onclick="closeMobileMenu()">首页</a>
+        <a href="projects.html" onclick="closeMobileMenu()">作品集</a>
+        <a href="about.html" onclick="closeMobileMenu()">关于我</a>
+        <a href="services.html" onclick="closeMobileMenu()">服务</a>
+        <a href="blog.html" onclick="closeMobileMenu()">博客</a>
+        <a href="index.html#contact" onclick="closeMobileMenu()">联系</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-media">
+                <video src="assets/logo.mp4" autoplay muted playsinline></video>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="projects.html" class="active">作品集</a></li>
+            <li><a href="about.html">关于我</a></li>
+            <li><a href="services.html">服务</a></li>
+            <li><a href="blog.html">博客</a></li>
+            <li><a href="index.html#contact">联系</a></li>
+        </ul>
+        <div class="nav-menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Detail Hero -->
+    <section class="detail-hero">
+        <div class="detail-breadcrumb reveal">
+            <a href="index.html">首页</a>
+            <span class="sep">/</span>
+            <a href="projects.html">作品集</a>
+            <span class="sep">/</span>
+            <span class="current" id="breadcrumbTitle">项目详情</span>
+        </div>
+        <div class="detail-main-image reveal" id="mainImage">
+            <img src="" alt="Project" id="mainImg">
+        </div>
+    </section>
+
+    <!-- Project Info -->
+    <section class="detail-content">
+        <div class="detail-info-bar reveal" id="infoBar">
+            <div class="info-item">
+                <div class="info-label">客户</div>
+                <div class="info-value" id="infoClient">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">时间</div>
+                <div class="info-value" id="infoYear">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">类型</div>
+                <div class="info-value" id="infoCategory">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">角色</div>
+                <div class="info-value" id="infoRole">-</div>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="detail-section reveal">
+            <h2 class="detail-section-title">项目描述</h2>
+            <div class="detail-description" id="projectDesc"></div>
+        </div>
+
+        <!-- Highlights -->
+        <div class="detail-section reveal">
+            <h2 class="detail-section-title">项目亮点</h2>
+            <div class="highlights-list" id="highlightsList"></div>
+        </div>
+
+        <!-- Gallery -->
+        <div class="detail-section reveal">
+            <h2 class="detail-section-title">作品画廊</h2>
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+    </section>
+
+    <!-- Related Projects -->
+    <section class="related-section">
+        <div class="detail-section-title reveal">相关项目推荐</div>
+        <div class="related-grid" id="relatedGrid"></div>
+    </section>
+
+    <!-- Prev / Next -->
+    <div class="prev-next-nav" id="prevNextNav"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-left">
+            <span class="brand">HUGO</span> &nbsp;|&nbsp; 設計作品集 &nbsp;|&nbsp; Copyright&copy; 2024 冯江威 All rights reserved.
+        </div>
+        <div class="footer-right">
+            <a href="index.html">返回首页</a>
+        </div>
+    </footer>
+
+    <script src="assets/js/common.js"></script>
+    <script>
+        // ========== Project Data ==========
+        const projectsData = {
+            'youman-brand': {
+                title: '优漫教育品牌设计',
+                category: 'edu',
+                categoryName: '教育品牌',
+                client: '优漫教育',
+                year: '2024',
+                role: '品牌设计师',
+                description: '为优漫教育打造全新品牌视觉识别系统，涵盖LOGO设计、品牌色彩体系、字体规范、IP形象设计及全套VI应用规范。设计理念以"激发创造力"为核心，通过明快的色彩搭配和现代感的图形语言，传递教育品牌的活力与专业。整套VI系统包含办公用品、宣传物料、环境导视等20余项应用设计，确保品牌在各个触点保持一致的视觉形象。',
+                images: ['assets/edu/03.jpg', 'assets/edu/04.jpg', 'assets/edu/05.jpg', 'assets/edu/06.jpg', 'assets/edu/08.jpg', 'assets/edu/09.jpg'],
+                highlights: ['全新LOGO设计，融合"U"字母与书本图形', '完整品牌色彩体系与字体规范', '20余项VI应用设计', '品牌手册编制与规范输出']
+            },
+            'youman-ip': {
+                title: 'U仔IP形象设计',
+                category: 'edu',
+                categoryName: 'IP设计',
+                client: '优漫教育',
+                year: '2024',
+                role: 'IP设计师',
+                description: '为优漫教育设计品牌IP角色"U仔"，以可爱的兔子造型融合品牌字母"U"的形态。角色设计兼顾亲和力与品牌识别度，支持2D平面和3D立体两种呈现方式。2024年3月完成版权登记，成为品牌对外传播的核心视觉符号。IP形象已广泛应用于品牌宣传、节日海报、社交媒体等场景。',
+                images: ['assets/edu/07.jpg', 'assets/edu/08.jpg', 'assets/edu/10.jpg', 'assets/edu/11.jpg'],
+                highlights: ['兔子造型融合品牌字母U', '2D/3D双版本设计', '2024年3月完成版权登记', '广泛应用于品牌传播场景']
+            },
+            'youman-ai': {
+                title: 'AIGC节气海报系列',
+                category: 'edu',
+                categoryName: 'AIGC设计',
+                client: '优漫教育',
+                year: '2024',
+                role: 'AIGC设计师',
+                description: '运用AIGC技术创作二十四节气系列海报，将传统文化与现代AI技术完美结合。每张海报以对应节气的自然景观和文化意象为基础，通过Midjourney生成高质量视觉画面，再进行后期精修与排版设计。系列涵盖大寒、小年、雨水、除夕等多个节气主题，在社交媒体获得广泛传播。',
+                images: ['assets/edu/30.jpg', 'assets/edu/31.jpg', 'assets/edu/32.jpg', 'assets/edu/33.jpg'],
+                highlights: ['AIGC技术与传统文化融合', 'Midjourney生成+后期精修', '系列化节气主题创作', '社交媒体广泛传播']
+            },
+            'youman-web': {
+                title: '优漫教育官网设计',
+                category: 'edu',
+                categoryName: 'Web设计',
+                client: '优漫教育',
+                year: '2024',
+                role: 'UI设计师',
+                description: '为优漫教育设计全新官方网站，支持平板、笔记本、手机三端响应式展示。网站设计以品牌VI为基础，融入现代Web设计趋势，注重视觉层次与用户体验。页面涵盖首页、课程介绍、师资展示、学员作品、新闻动态等核心模块，通过流畅的动效和清晰的信息架构提升品牌专业形象。',
+                images: ['assets/edu/34.jpg', 'assets/edu/35.jpg', 'assets/edu/36.jpg', 'assets/edu/37.jpg'],
+                highlights: ['三端响应式设计', '品牌VI延伸应用', '完整页面模块设计', '现代动效与交互体验']
+            },
+            'youman-poster': {
+                title: '手绘节日海报系列',
+                category: 'edu',
+                categoryName: '节日海报',
+                client: '优漫教育',
+                year: '2024',
+                role: '视觉设计师',
+                description: '为优漫教育创作系列手绘风格节日海报，涵盖五一劳动节、中秋节、国庆节、七夕节等主要节日。设计融合品牌IP形象"U仔"与手绘插画风格，通过温馨的场景描绘和富有节日氛围的色彩搭配，传递品牌的人文关怀。每张海报均保持统一的视觉风格，同时体现不同节日的独特文化内涵。',
+                images: ['assets/edu/29.jpg', 'assets/edu/25.jpg', 'assets/edu/26.jpg', 'assets/edu/27.jpg', 'assets/edu/28.jpg'],
+                highlights: ['IP形象与手绘风格融合', '覆盖全年主要节日', '统一风格差异化表达', '品牌人文关怀传递']
+            },
+            'youjob-brand': {
+                title: '优就业品牌设计',
+                category: 'edu',
+                categoryName: '教育品牌',
+                client: '优就业',
+                year: '2023',
+                role: '品牌设计师',
+                description: '为优就业品牌提供全套视觉设计服务，包括LOGO提案设计、VI应用系统、办公文具及产品包装设计。设计以"职业成长"为核心理念，通过稳重的色彩搭配和专业的图形语言，建立可信赖的品牌形象。项目涵盖名片、信封、文件夹、手提袋等办公用品，以及课程教材、证书等产品包装设计。',
+                images: ['assets/edu/21.jpg', 'assets/edu/22.jpg', 'assets/edu/23.jpg', 'assets/edu/24.jpg'],
+                highlights: ['多方案LOGO提案', '完整VI应用系统', '办公文具全套设计', '产品包装视觉设计']
+            },
+            'profilm-brand': {
+                title: '浦诺菲尊膜品牌海报',
+                category: 'auto',
+                categoryName: '汽车品牌',
+                client: '浦诺菲',
+                year: '2024',
+                role: '品牌设计师',
+                description: '为浦诺菲尊膜品牌创作系列品牌海报，以"守护"和"荣誉"为核心主题，面向手机端传播。设计运用高端汽车膜产品场景，结合科技感视觉元素和精致的产品特写，传递品牌的专业与品质。海报在保持品牌调性的同时，通过强烈的视觉冲击力吸引目标用户关注。',
+                images: ['assets/auto/40.jpg', 'assets/auto/41.jpg', 'assets/auto/42.jpg', 'assets/auto/43.jpg'],
+                highlights: ['守护/荣誉双主题创作', '手机端竖版设计', '高端汽车膜品牌调性', '科技感视觉传达']
+            },
+            'profilm-product': {
+                title: '浦诺菲产品海报系列',
+                category: 'auto',
+                categoryName: '产品设计',
+                client: '浦诺菲',
+                year: '2024',
+                role: '产品设计师',
+                description: '为浦诺菲旗下多款汽车膜产品创作系列海报，包括炫彩车衣、P10Max隐形车衣、星曜70前挡膜等。每张海报聚焦产品核心卖点，通过精美的产品摄影和专业的版式设计，清晰呈现产品差异化优势。系列海报形成完整的产品视觉矩阵，助力品牌线上线下推广。',
+                images: ['assets/auto/44.jpg', 'assets/auto/45.jpg'],
+                highlights: ['多产品线海报矩阵', '核心卖点精准传达', '产品摄影+版式设计', '线上线下推广适用']
+            },
+            'wanshun': {
+                title: '万顺新材汽车膜',
+                category: 'auto',
+                categoryName: '汽车品牌',
+                client: '万顺新材',
+                year: '2024',
+                role: '品牌设计师',
+                description: '为万顺新材旗下汽车膜产品创作系列海报，涵盖H20、S70、尊膜等多个产品系列。设计重点展示各产品的差异化优势，通过数据可视化和场景化呈现，让消费者直观了解产品性能特点。整体视觉风格统一，同时每款产品又有独特的视觉识别元素。',
+                images: ['assets/auto/46.jpg', 'assets/auto/48.jpg', 'assets/auto/49.jpg'],
+                highlights: ['多产品系列海报', '差异化卖点展示', '数据可视化设计', '统一风格多元表达']
+            },
+            'wanshun-color': {
+                title: '万顺晶彩改色膜',
+                category: 'auto',
+                categoryName: '产品设计',
+                client: '万顺新材',
+                year: '2024',
+                role: '产品设计师',
+                description: '为万顺晶彩改色膜系列产品创作色系展示海报，涵盖CC75、CC70、CC82等多个色号系列。设计以色彩为核心视觉元素，通过大面积色块展示和精致的产品细节呈现，让消费者直观感受改色膜的丰富色彩选择和卓越质感。海报兼具艺术性和商业性，有效提升产品吸引力。',
+                images: ['assets/auto/47.jpg'],
+                highlights: ['色系展示核心设计', '大面积色彩视觉冲击', '产品质感精细呈现', '艺术性与商业性兼顾']
+            },
+            'hanshan': {
+                title: '航天山由品牌海报',
+                category: 'auto',
+                categoryName: '汽车品牌',
+                client: '航天山由',
+                year: '2024',
+                role: '品牌设计师',
+                description: '为航天山由窗膜品牌创作3张系列品牌海报，分别聚焦"窗膜卖点"、"技术革新"和"颜值提升"三大主题。设计以科技感为视觉基调，融合航天科技元素和现代设计语言，传递品牌的技术实力和创新精神。每张海报通过独特的视觉隐喻和精致的排版，让复杂的科技卖点变得直观易懂。',
+                images: ['assets/auto/50.jpg'],
+                highlights: ['三大主题系列创作', '航天科技元素融合', '科技感视觉基调', '复杂卖点直观呈现']
+            },
+            'yuanshuai': {
+                title: '元帅火花塞数据海报',
+                category: 'auto',
+                categoryName: '数据可视化',
+                client: '元帅火花塞',
+                year: '2024',
+                role: '数据可视化设计师',
+                description: '为元帅火花塞品牌创作数据可视化海报，将品牌核心数据——33年历史、39项专利、600+SKU、1.2亿产能——转化为直观的视觉图形。设计以信息图表为核心，通过精美的数据可视化手法，让冰冷的数字变得生动有力，有效传递品牌的行业地位和制造实力。',
+                images: ['assets/auto/51.jpg'],
+                highlights: ['核心数据可视化', '信息图表设计', '品牌实力直观传达', '数字图形化表达']
+            },
+            'chando': {
+                title: '自然堂店铺专题页',
+                category: 'ecom',
+                categoryName: '电商品牌',
+                client: '自然堂',
+                year: '2023',
+                role: '电商设计师',
+                description: '为自然堂美妆品牌设计电商店铺专题页及BANNER，以MacBook样机为展示载体，呈现品牌产品的高端质感。设计注重视觉层次和产品卖点提炼，通过精致的排版和优雅的色彩搭配，提升品牌在电商平台的视觉竞争力。专题页涵盖活动主视觉、产品推荐、优惠信息等核心模块。',
+                images: ['assets/ecom/52.jpg', 'assets/ecom/53.jpg'],
+                highlights: ['电商专题页设计', 'MacBook样机展示', '品牌高端质感呈现', '活动视觉完整输出']
+            },
+            'chando-promo': {
+                title: '自然堂年中促销页',
+                category: 'ecom',
+                categoryName: '促销设计',
+                client: '自然堂',
+                year: '2023',
+                role: '电商设计师',
+                description: '为自然堂年中大促设计电商促销页面，以国潮风为设计主调，融合传统牌坊元素与现代美妆品牌调性。页面包含国潮风牌坊主视觉、优惠券设计、套装推荐模块等，将传统文化元素与美妆品牌完美结合，打造独具特色的促销视觉体验，有效提升活动转化率。',
+                images: ['assets/ecom/54.jpg', 'assets/ecom/55.jpg', 'assets/ecom/56.jpg'],
+                highlights: ['国潮风设计主调', '传统牌坊元素融合', '优惠券与套装模块', '活动转化率提升']
+            },
+            'amazon': {
+                title: '亚马逊运营主图',
+                category: 'ecom',
+                categoryName: '跨境电商',
+                client: '跨境电商项目',
+                year: '2023',
+                role: '电商设计师',
+                description: '为亚马逊平台雨刮胶条产品设计6张运营主图，涵盖产品功能展示、核心卖点提炼、尺寸规格说明、使用场景呈现等维度。设计遵循亚马逊平台视觉规范，通过清晰的信息层级和专业的产品呈现，帮助产品在搜索结果中脱颖而出，提升点击率和转化率。',
+                images: ['assets/ecom/58.jpg', 'assets/ecom/57.jpg'],
+                highlights: ['6张主图完整设计', '功能/卖点/场景全覆盖', '亚马逊平台规范', '点击率与转化率优化']
+            },
+            'aigc-design': {
+                title: 'AIGC设计类目',
+                category: 'other',
+                categoryName: 'AIGC创意',
+                client: '个人创作',
+                year: '2024',
+                role: 'AIGC设计师',
+                description: '运用AIGC技术进行创意设计探索，涵盖黄金周、露营、夏日出游、五一促销等5个主题。每个主题通过Midjourney生成高质量视觉画面，结合设计思维进行创意构图和后期处理。作品展示了AIGC技术在商业设计领域的应用潜力，探索人机协作的创作模式。',
+                images: ['assets/other/60.jpg', 'assets/other/61.jpg', 'assets/other/62.jpg', 'assets/other/63.jpg'],
+                highlights: ['5个主题AIGC创作', 'Midjourney技术运用', '人机协作创作模式', '商业设计应用探索']
+            },
+            'aigc-portfolio': {
+                title: 'AIGC赋能作品集',
+                category: 'other',
+                categoryName: 'AIGC创意',
+                client: '个人创作',
+                year: '2024',
+                role: 'AIGC设计师',
+                description: '展示AIGC技术在多元设计领域的创作能力，包含香水产品摄影、IP形象设计、耳机产品渲染、赛博朋克场景等6组创作。每组作品运用不同的AIGC工具和技法，展现从产品视觉到概念场景的全方位创作实力，体现AIGC赋能设计的无限可能。',
+                images: ['assets/other/64.jpg', 'assets/other/59.jpg'],
+                highlights: ['6组多元AIGC创作', '产品/角色/场景全覆盖', '多工具技法运用', 'AIGC赋能设计展示']
+            },
+            '3d-design': {
+                title: '拟物化设计系列',
+                category: 'other',
+                categoryName: '3D设计',
+                client: '个人创作',
+                year: '2024',
+                role: '3D设计师',
+                description: '运用3D建模与渲染技术创作拟物化海报系列，包含"嗨翻黄金周"、"好工作野路子"、"户外露营"3张作品。设计以超写实拟物化风格为核心，通过精细的材质表现和光影渲染，将日常物品转化为富有故事感的视觉画面，展现3D技术在平面设计中的创意应用。',
+                images: ['assets/other/65.jpg'],
+                highlights: ['超写实拟物化风格', '精细材质与光影', '3D技术平面应用', '故事感视觉创作']
+            }
+        };
+
+        // ========== Category Map ==========
+        const categoryMap = {
+            'edu': '教育品牌',
+            'auto': '汽车品牌',
+            'ecom': '电商品牌',
+            'other': '其他项目'
+        };
+
+        // ========== Get Project IDs by Category ==========
+        function getProjectsByCategory(cat) {
+            return Object.entries(projectsData)
+                .filter(([_, p]) => p.category === cat)
+                .map(([id, _]) => id);
+        }
+
+        // ========== Render Project Detail ==========
+        function renderProject() {
+            const id = getUrlParam('id');
+            const project = projectsData[id];
+
+            if (!project) {
+                document.getElementById('mainImg').src = 'assets/edu/03.jpg';
+                document.getElementById('breadcrumbTitle').textContent = '项目未找到';
+                document.getElementById('infoClient').textContent = '-';
+                document.getElementById('infoYear').textContent = '-';
+                document.getElementById('infoCategory').textContent = '-';
+                document.getElementById('infoRole').textContent = '-';
+                document.getElementById('projectDesc').textContent = '未找到对应的项目信息，请返回作品集页面查看。';
+                return;
+            }
+
+            // Update page title
+            document.title = project.title + ' — HUGO | 冯江威品牌设计作品集';
+
+            // Breadcrumb
+            document.getElementById('breadcrumbTitle').textContent = project.title;
+
+            // Main image
+            document.getElementById('mainImg').src = project.images[0];
+            document.getElementById('mainImg').alt = project.title;
+
+            // Info bar
+            document.getElementById('infoClient').textContent = project.client;
+            document.getElementById('infoYear').textContent = project.year;
+            document.getElementById('infoCategory').textContent = project.categoryName;
+            document.getElementById('infoRole').textContent = project.role;
+
+            // Description
+            document.getElementById('projectDesc').textContent = project.description;
+
+            // Highlights
+            const highlightsList = document.getElementById('highlightsList');
+            highlightsList.innerHTML = project.highlights.map(h => `
+                <div class="highlight-item">
+                    <div class="highlight-icon">&#10003;</div>
+                    <div class="highlight-text">${h}</div>
+                </div>
+            `).join('');
+
+            // Gallery
+            const galleryGrid = document.getElementById('galleryGrid');
+            galleryGrid.innerHTML = project.images.map((img, i) => {
+                let cls = '';
+                if (i === 0) cls = 'wide';
+                return `<div class="gallery-item ${cls}" onclick="openLightbox('${img}')">
+                    <img src="${img}" alt="${project.title} - ${i + 1}" loading="lazy">
+                </div>`;
+            }).join('');
+
+            // Related projects
+            const relatedIds = getProjectsByCategory(project.category).filter(pid => pid !== id).slice(0, 3);
+            const relatedGrid = document.getElementById('relatedGrid');
+            relatedGrid.innerHTML = relatedIds.map(rid => {
+                const rp = projectsData[rid];
+                return `<a href="project-detail.html?id=${rid}&cat=${rp.category}" class="related-card">
+                    <div class="rc-image"><img src="${rp.images[0]}" alt="${rp.title}" loading="lazy"></div>
+                    <div class="rc-content">
+                        <div class="rc-category">${rp.categoryName}</div>
+                        <h3 class="rc-title">${rp.title}</h3>
+                        <p class="rc-desc">${rp.description.substring(0, 60)}...</p>
+                    </div>
+                </a>`;
+            }).join('');
+
+            // Prev / Next
+            const allIds = Object.keys(projectsData);
+            const currentIndex = allIds.indexOf(id);
+            const prevNextNav = document.getElementById('prevNextNav');
+            let pnHTML = '';
+
+            if (currentIndex > 0) {
+                const prev = projectsData[allIds[currentIndex - 1]];
+                pnHTML += `<a href="project-detail.html?id=${allIds[currentIndex - 1]}&cat=${prev.category}" class="pn-card prev">
+                    <div class="pn-image"><img src="${prev.images[0]}" alt="${prev.title}"></div>
+                    <div>
+                        <div class="pn-label">上一个项目</div>
+                        <div class="pn-title">${prev.title}</div>
+                    </div>
+                </a>`;
+            } else {
+                pnHTML += '<div></div>';
+            }
+
+            if (currentIndex < allIds.length - 1) {
+                const next = projectsData[allIds[currentIndex + 1]];
+                pnHTML += `<a href="project-detail.html?id=${allIds[currentIndex + 1]}&cat=${next.category}" class="pn-card next">
+                    <div class="pn-image"><img src="${next.images[0]}" alt="${next.title}"></div>
+                    <div>
+                        <div class="pn-label">下一个项目</div>
+                        <div class="pn-title">${next.title}</div>
+                    </div>
+                </a>`;
+            }
+
+            prevNextNav.innerHTML = pnHTML;
+        }
+
+        // ========== Lightbox ==========
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            document.getElementById('lightboxImg').src = src;
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        document.getElementById('lightboxClose').addEventListener('click', () => {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                e.currentTarget.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // ========== Init ==========
+        renderProject();
+    </script>
+</body>
+</html>
