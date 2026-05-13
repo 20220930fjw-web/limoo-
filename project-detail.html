@@ -164,6 +164,61 @@
             gap: 20px;
         }
 
+        /* ========== Longform Gallery (Vertical Long Images) ========== */
+        .longform-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .longform-item {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            transition: var(--transition);
+            cursor: pointer;
+            background: var(--bg-card);
+        }
+
+        .longform-item:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .longform-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .longform-item:hover img {
+            transform: scale(1.01);
+        }
+
+        .longform-number {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            width: 36px;
+            height: 36px;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+        }
+
         /* ========== Poster Gallery (Vertical) ========== */
         .poster-gallery {
             display: flex;
@@ -697,18 +752,29 @@
                 images: ['assets/edu/21.jpg', 'assets/edu/22.jpg', 'assets/edu/23.jpg', 'assets/edu/24.jpg'],
                 highlights: ['多方案LOGO提案', '完整VI应用系统', '办公文具全套设计', '产品包装视觉设计']
             },
-            'profilm': {
-                title: '浦诺菲尊膜品牌全案',
+            'profilm-brand': {
+                title: '浦诺菲尊膜品牌长图文',
                 category: 'auto',
                 categoryName: '汽车品牌',
                 client: '浦诺菲',
                 year: '2024',
                 role: '品牌设计师',
-                galleryType: 'poster',
-                description: '为浦诺菲尊膜品牌打造全套视觉设计，涵盖品牌海报与产品海报矩阵。以"实力有认证"、"守护有答案"、"颜值有担当"为核心主题，创作手机端竖版系列海报。设计运用高端汽车场景、科技感光效和精致的产品特写，传递品牌的专业与品质，形成完整的品牌视觉体系。',
-                images: ['assets/auto/profilm-01.jpg', 'assets/auto/profilm-02.jpg', 'assets/auto/profilm-03.jpg', 'assets/auto/40.jpg', 'assets/auto/41.jpg', 'assets/auto/42.jpg', 'assets/auto/43.jpg', 'assets/auto/44.jpg', 'assets/auto/45.jpg'],
-                posterImages: ['assets/auto/profilm-01.jpg', 'assets/auto/profilm-02.jpg', 'assets/auto/profilm-03.jpg'],
-                highlights: ['实力/守护/颜值三大核心主题', '手机端竖版海报设计（1080×2339）', '品牌海报+产品海报完整矩阵', '炫彩车衣/隐形车衣/前挡膜全产品线']
+                galleryType: 'longform',
+                description: '为浦诺菲尊膜品牌打造品牌传播长图文系列，以"实力有认证"、"守护有答案"、"颜值有担当"为核心主题，创作手机端竖版长图文。设计运用高端汽车场景、科技感光效和精致的产品特写，通过连续滚动的长图文形式，深度传递品牌实力与产品价值，形成沉浸式的品牌体验。',
+                images: ['assets/auto/profilm-v1.jpg', 'assets/auto/profilm-v2.jpg', 'assets/auto/profilm-v3.jpg', 'assets/auto/profilm-v4.jpg', 'assets/auto/profilm-v5.jpg', 'assets/auto/profilm-v6.jpg', 'assets/auto/profilm-v7.jpg'],
+                highlights: ['实力/守护/颜值三大核心主题', '手机端竖版长图文设计（1080×2339）', '沉浸式品牌体验', '科技感视觉传达']
+            },
+            'profilm-product': {
+                title: '浦诺菲产品长图文系列',
+                category: 'auto',
+                categoryName: '汽车品牌',
+                client: '浦诺菲',
+                year: '2024',
+                role: '产品设计师',
+                galleryType: 'longform',
+                description: '为浦诺菲旗下多款汽车膜产品创作产品长图文系列，涵盖炫彩车衣、隐形车衣、前挡膜等核心产品线。通过竖版长图文的形式，深度展示产品卖点、技术优势和应用场景，让消费者在滑动浏览中全面了解产品价值。每张长图文聚焦单一产品，以精美的视觉呈现和清晰的信息层级，有效提升产品转化率。',
+                images: ['assets/auto/profilm-v8.jpg', 'assets/auto/profilm-v9.jpg', 'assets/auto/profilm-v10.jpg', 'assets/auto/profilm-v11.jpg', 'assets/auto/profilm-v12.jpg', 'assets/auto/profilm-v13.jpg', 'assets/auto/profilm-v14.jpg'],
+                highlights: ['多产品线长图文矩阵', '产品卖点深度展示', '竖版沉浸式阅读体验', '信息层级清晰']
             },
             'wanshun': {
                 title: '万顺新材品牌全案',
@@ -874,7 +940,16 @@
             const galleryGrid = document.getElementById('galleryGrid');
             const gallerySection = galleryGrid.parentElement;
 
-            if (project.galleryType === 'poster' && project.posterImages) {
+            if (project.galleryType === 'longform') {
+                // Longform gallery for vertical long images (1080x2339)
+                galleryGrid.className = 'longform-gallery';
+                galleryGrid.innerHTML = project.images.map((img, i) => {
+                    return `<div class="longform-item" onclick="openLightbox('${img}')">
+                        <img src="${img}" alt="${project.title} - ${i + 1}" loading="lazy">
+                        <div class="longform-number">${String(i + 1).padStart(2, '0')}</div>
+                    </div>`;
+                }).join('');
+            } else if (project.galleryType === 'poster' && project.posterImages) {
                 // Poster gallery for vertical posters
                 const posterLabels = ['实力 有认证', '守护 有答案', '颜值 有担当'];
                 galleryGrid.className = 'poster-gallery';
