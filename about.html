@@ -572,6 +572,70 @@
             background: var(--bg-secondary);
         }
 
+        /* ========== Project Fields Section ========== */
+        .fields-section {
+            padding: 100px 48px;
+            background: var(--bg-primary);
+        }
+
+        .fields-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .field-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-lg);
+            padding: 32px 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .field-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-6px);
+        }
+
+        .field-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .field-name {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .field-count {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
+        }
+
+        .field-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .field-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-top: 12px;
+        }
+
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -864,7 +928,7 @@
                     <div class="info-label">服务客户</div>
                 </div>
                 <div class="info-item">
-                    <div class="info-value">60+</div>
+                    <div class="info-value">66+</div>
                     <div class="info-label">完成项目</div>
                 </div>
             </div>
@@ -925,6 +989,7 @@
                 <div class="education-content">
                     <p>广东理工学院 · 专科</p>
                     <p>辅修数字媒体艺术设计。主修课程：视觉原理、版式设计、广告设计、设计史、广告心理学、FLASH动画等。</p>
+                    <p>在校期间参与全国大学生商业产品创意设计大赛，凭借原创商业产品视觉方案，斩获优秀创意奖。</p>
                 </div>
             </div>
         </div>
@@ -939,8 +1004,55 @@
             </div>
             <div class="story-content reveal">
                 <p class="story-text">我是冯江威，设计圈内以"HUGO"为人所知。与设计的缘分，始于大学时期对视觉艺术的浓厚兴趣。那时候，我常常在课余时间研究各种品牌案例，拆解它们的LOGO、色彩搭配和版式布局，试图理解优秀设计背后的逻辑与美学。</p>
-                <p class="story-text">毕业后，我正式踏入设计行业，先后在广州皓程和广州云创两家公司任职。在广州皓程的半年里，我快速积累了电商设计实战经验，学会了如何在商业需求与视觉美感之间找到平衡点。2023年加入广州云创后，我的设计视野得到了极大的拓展——从教育品牌的系统化VI设计，到汽车行业的产品视觉呈现，再到AIGC技术在设计领域的创新应用，每一个项目都让我对设计有了更深刻的理解。</p>
-                <p class="story-text">我始终相信，好的设计不仅仅是视觉上的美观，更是品牌战略的视觉化表达。每一个色彩的选择、每一个字体的运用、每一个版式的安排，都应该服务于品牌的核心价值和目标受众。这种设计理念贯穿在我所有的项目实践中。</p>
+                <p class="story-text">毕业后，我正式踏入设计行业，先后在广州皓程、广州云创和上海商睿三家公司任职。在广州皓程的半年里，我快速积累了电商设计实战经验，学会了如何在商业需求与视觉美感之间找到平衡点。2023年加入广州云创后，我的设计视野得到了极大的拓展——从教育品牌的系统化VI设计，到汽车行业的产品视觉呈现，再到AIGC技术在设计领域的创新应用，每一个项目都让我对设计有了更深刻的理解。2025年，我加入上海商睿智能科技有限公司，开始向设计管理方向进阶，负责整体品牌视觉体系搭建与设计团队的统筹工作。</p>
+                <p class="story-text">我始终相信，好的设计不仅仅是视觉上的美观，更是品牌战略的视觉化表达。每一个色彩的选择、每一个字体的运用、每一个版式的安排，都应该服务于品牌的核心价值和目标受众。这种设计理念，贯穿在我从个人创作到团队管理的所有实践中。未来，我也希望继续以设计为支点，用专业的策略、严谨的细节和前沿的技术，为更多品牌创造有价值的视觉表达。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Fields Section -->
+    <section class="fields-section">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <h2 class="section-title">项目领域</h2>
+                <div class="section-label">Project Fields</div>
+            </div>
+            <div class="fields-grid reveal">
+                <div class="field-card">
+                    <div class="field-icon">&#127891;</div>
+                    <div class="field-name">教育品牌</div>
+                    <div class="field-count">24</div>
+                    <div class="field-label">项目</div>
+                    <div class="field-desc">品牌VI、IP形象、新媒体设计</div>
+                </div>
+                <div class="field-card">
+                    <div class="field-icon">&#128663;</div>
+                    <div class="field-name">汽车品牌</div>
+                    <div class="field-count">12</div>
+                    <div class="field-label">项目</div>
+                    <div class="field-desc">产品视觉、营销物料设计</div>
+                </div>
+                <div class="field-card">
+                    <div class="field-icon">&#128132;</div>
+                    <div class="field-name">美妆护肤</div>
+                    <div class="field-count">7</div>
+                    <div class="field-label">项目</div>
+                    <div class="field-desc">电商视觉、详情页优化</div>
+                </div>
+                <div class="field-card">
+                    <div class="field-icon">&#128187;</div>
+                    <div class="field-name">科技智能</div>
+                    <div class="field-count">8</div>
+                    <div class="field-label">项目</div>
+                    <div class="field-desc">品牌全案、设计管理</div>
+                </div>
+                <div class="field-card">
+                    <div class="field-icon">&#127758;</div>
+                    <div class="field-name">其他项目</div>
+                    <div class="field-count">15</div>
+                    <div class="field-label">项目</div>
+                    <div class="field-desc">多行业品牌推广、IP策划</div>
+                </div>
             </div>
         </div>
     </section>
@@ -960,7 +1072,7 @@
                         </svg>
                     </div>
                     <h3 class="philosophy-title">策略先行</h3>
-                    <p class="philosophy-desc">设计不是凭空想象的艺术创作，而是基于品牌战略的视觉表达。每一次设计之前，我都会深入了解品牌定位、目标受众和市场竞争，确保设计方案有理有据、精准有效。</p>
+                    <p class="philosophy-desc">设计不是凭空想象的艺术创作，而是基于品牌战略的视觉表达。每一次设计之前，我都会深入了解品牌定位、目标受众和市场竞争，确保设计方案有理有据、精准有效。同时，在团队管理中，我也会以业务目标为导向，制定清晰的设计策略与执行路径，让设计服务于品牌长期价值。</p>
                 </div>
                 <div class="philosophy-card">
                     <div class="philosophy-icon">
@@ -970,7 +1082,7 @@
                         </svg>
                     </div>
                     <h3 class="philosophy-title">细节至上</h3>
-                    <p class="philosophy-desc">魔鬼藏在细节中。从字间距的微调到色彩饱和度的把控，每一个细节都影响着最终的设计品质。我追求像素级的精准，因为正是这些细节构成了卓越的设计体验。</p>
+                    <p class="philosophy-desc">魔鬼藏在细节中。从字间距的微调、色彩饱和度的把控，到设计规范的落地执行、项目节点的精准推进，每一个细节都影响着最终的设计品质。我追求像素级的精准，也重视流程中的细节管理，因为正是这些细节，共同构成了卓越的品牌视觉体验与高效的团队协作。</p>
                 </div>
                 <div class="philosophy-card">
                     <div class="philosophy-icon">
@@ -981,7 +1093,7 @@
                         </svg>
                     </div>
                     <h3 class="philosophy-title">技术赋能</h3>
-                    <p class="philosophy-desc">拥抱AIGC等前沿技术，将AI工具融入设计工作流。技术不是替代创意，而是拓展创意的边界。通过人机协作，探索更多设计可能性，为品牌带来更具前瞻性的视觉方案。</p>
+                    <p class="philosophy-desc">拥抱AIGC等前沿技术，将AI工具深度融入设计工作流。技术不是替代创意，而是拓展创意的边界。从提升个人设计效率，到推动团队设计流程标准化、自动化，通过人机协作，探索更多设计可能性，为品牌带来更具前瞻性的视觉方案，也让团队的交付能力持续升级。</p>
                 </div>
             </div>
         </div>
