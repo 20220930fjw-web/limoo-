@@ -164,6 +164,70 @@
             gap: 20px;
         }
 
+        /* ========== Poster Gallery (Vertical) ========== */
+        .poster-gallery {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            padding-bottom: 16px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .poster-gallery::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .poster-gallery::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.03);
+            border-radius: 3px;
+        }
+
+        .poster-gallery::-webkit-scrollbar-thumb {
+            background: rgba(139, 92, 246, 0.3);
+            border-radius: 3px;
+        }
+
+        .poster-gallery::-webkit-scrollbar-thumb:hover {
+            background: rgba(139, 92, 246, 0.5);
+        }
+
+        .poster-item {
+            flex-shrink: 0;
+            width: 320px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            transition: var(--transition);
+            cursor: pointer;
+            scroll-snap-align: start;
+        }
+
+        .poster-item:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .poster-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .poster-item:hover img {
+            transform: scale(1.02);
+        }
+
+        .poster-label {
+            padding: 12px 16px;
+            background: var(--bg-card);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
         .gallery-item {
             border-radius: var(--radius-md);
             overflow: hidden;
@@ -633,68 +697,48 @@
                 images: ['assets/edu/21.jpg', 'assets/edu/22.jpg', 'assets/edu/23.jpg', 'assets/edu/24.jpg'],
                 highlights: ['多方案LOGO提案', '完整VI应用系统', '办公文具全套设计', '产品包装视觉设计']
             },
-            'profilm-brand': {
-                title: '浦诺菲尊膜品牌海报',
+            'profilm': {
+                title: '浦诺菲尊膜品牌全案',
                 category: 'auto',
                 categoryName: '汽车品牌',
                 client: '浦诺菲',
                 year: '2024',
                 role: '品牌设计师',
-                description: '为浦诺菲尊膜品牌创作系列品牌海报，以"守护"和"荣誉"为核心主题，面向手机端传播。设计运用高端汽车膜产品场景，结合科技感视觉元素和精致的产品特写，传递品牌的专业与品质。海报在保持品牌调性的同时，通过强烈的视觉冲击力吸引目标用户关注。',
-                images: ['assets/auto/40.jpg', 'assets/auto/41.jpg', 'assets/auto/42.jpg', 'assets/auto/43.jpg'],
-                highlights: ['守护/荣誉双主题创作', '手机端竖版设计', '高端汽车膜品牌调性', '科技感视觉传达']
-            },
-            'profilm-product': {
-                title: '浦诺菲产品海报系列',
-                category: 'auto',
-                categoryName: '产品设计',
-                client: '浦诺菲',
-                year: '2024',
-                role: '产品设计师',
-                description: '为浦诺菲旗下多款汽车膜产品创作系列海报，包括炫彩车衣、P10Max隐形车衣、星曜70前挡膜等。每张海报聚焦产品核心卖点，通过精美的产品摄影和专业的版式设计，清晰呈现产品差异化优势。系列海报形成完整的产品视觉矩阵，助力品牌线上线下推广。',
-                images: ['assets/auto/44.jpg', 'assets/auto/45.jpg'],
-                highlights: ['多产品线海报矩阵', '核心卖点精准传达', '产品摄影+版式设计', '线上线下推广适用']
+                galleryType: 'poster',
+                description: '为浦诺菲尊膜品牌打造全套视觉设计，涵盖品牌海报与产品海报矩阵。以"实力有认证"、"守护有答案"、"颜值有担当"为核心主题，创作手机端竖版系列海报。设计运用高端汽车场景、科技感光效和精致的产品特写，传递品牌的专业与品质，形成完整的品牌视觉体系。',
+                images: ['assets/auto/profilm-01.jpg', 'assets/auto/profilm-02.jpg', 'assets/auto/profilm-03.jpg', 'assets/auto/40.jpg', 'assets/auto/41.jpg', 'assets/auto/42.jpg', 'assets/auto/43.jpg', 'assets/auto/44.jpg', 'assets/auto/45.jpg'],
+                posterImages: ['assets/auto/profilm-01.jpg', 'assets/auto/profilm-02.jpg', 'assets/auto/profilm-03.jpg'],
+                highlights: ['实力/守护/颜值三大核心主题', '手机端竖版海报设计（1080×2339）', '品牌海报+产品海报完整矩阵', '炫彩车衣/隐形车衣/前挡膜全产品线']
             },
             'wanshun': {
-                title: '万顺新材汽车膜',
+                title: '万顺新材品牌全案',
                 category: 'auto',
                 categoryName: '汽车品牌',
                 client: '万顺新材',
                 year: '2024',
                 role: '品牌设计师',
-                description: '为万顺新材旗下汽车膜产品创作系列海报，涵盖H20、S70、尊膜等多个产品系列。设计重点展示各产品的差异化优势，通过数据可视化和场景化呈现，让消费者直观了解产品性能特点。整体视觉风格统一，同时每款产品又有独特的视觉识别元素。',
-                images: ['assets/auto/46.jpg', 'assets/auto/48.jpg', 'assets/auto/49.jpg'],
-                highlights: ['多产品系列海报', '差异化卖点展示', '数据可视化设计', '统一风格多元表达']
-            },
-            'wanshun-color': {
-                title: '万顺晶彩改色膜',
-                category: 'auto',
-                categoryName: '产品设计',
-                client: '万顺新材',
-                year: '2024',
-                role: '产品设计师',
-                description: '为万顺晶彩改色膜系列产品创作色系展示海报，涵盖CC75、CC70、CC82等多个色号系列。设计以色彩为核心视觉元素，通过大面积色块展示和精致的产品细节呈现，让消费者直观感受改色膜的丰富色彩选择和卓越质感。海报兼具艺术性和商业性，有效提升产品吸引力。',
-                images: ['assets/auto/47.jpg'],
-                highlights: ['色系展示核心设计', '大面积色彩视觉冲击', '产品质感精细呈现', '艺术性与商业性兼顾']
+                description: '为万顺新材旗下汽车膜产品创作全套视觉设计，涵盖隔热膜与晶彩改色膜两大产品线。隔热膜系列展示H20、S70、尊膜等产品的差异化优势；改色膜系列以色彩为核心视觉元素，呈现CC75、CC70、CC82等丰富色号选择。整体视觉风格统一，同时每款产品又有独特的视觉识别元素。',
+                images: ['assets/auto/46.jpg', 'assets/auto/47.jpg', 'assets/auto/48.jpg', 'assets/auto/49.jpg'],
+                highlights: ['隔热膜+改色膜双产品线', '差异化卖点精准展示', '丰富色系视觉呈现', '统一风格多元表达']
             },
             'hanshan': {
-                title: '航天山由品牌海报',
+                title: '航天山由品牌设计',
                 category: 'auto',
                 categoryName: '汽车品牌',
                 client: '航天山由',
                 year: '2024',
                 role: '品牌设计师',
-                description: '为航天山由窗膜品牌创作3张系列品牌海报，分别聚焦"窗膜卖点"、"技术革新"和"颜值提升"三大主题。设计以科技感为视觉基调，融合航天科技元素和现代设计语言，传递品牌的技术实力和创新精神。每张海报通过独特的视觉隐喻和精致的排版，让复杂的科技卖点变得直观易懂。',
+                description: '为航天山由窗膜品牌创作系列品牌海报，分别聚焦"窗膜卖点"、"技术革新"和"颜值提升"三大主题。设计以科技感为视觉基调，融合航天科技元素和现代设计语言，传递品牌的技术实力和创新精神。每张海报通过独特的视觉隐喻和精致的排版，让复杂的科技卖点变得直观易懂。',
                 images: ['assets/auto/50.jpg'],
                 highlights: ['三大主题系列创作', '航天科技元素融合', '科技感视觉基调', '复杂卖点直观呈现']
             },
             'yuanshuai': {
-                title: '元帅火花塞数据海报',
+                title: '元帅火花塞品牌设计',
                 category: 'auto',
-                categoryName: '数据可视化',
+                categoryName: '汽车品牌',
                 client: '元帅火花塞',
                 year: '2024',
-                role: '数据可视化设计师',
+                role: '品牌设计师',
                 description: '为元帅火花塞品牌创作数据可视化海报，将品牌核心数据——33年历史、39项专利、600+SKU、1.2亿产能——转化为直观的视觉图形。设计以信息图表为核心，通过精美的数据可视化手法，让冰冷的数字变得生动有力，有效传递品牌的行业地位和制造实力。',
                 images: ['assets/auto/51.jpg'],
                 highlights: ['核心数据可视化', '信息图表设计', '品牌实力直观传达', '数字图形化表达']
@@ -828,13 +872,42 @@
 
             // Gallery
             const galleryGrid = document.getElementById('galleryGrid');
-            galleryGrid.innerHTML = project.images.map((img, i) => {
-                let cls = '';
-                if (i === 0) cls = 'wide';
-                return `<div class="gallery-item ${cls}" onclick="openLightbox('${img}')">
-                    <img src="${img}" alt="${project.title} - ${i + 1}" loading="lazy">
-                </div>`;
-            }).join('');
+            const gallerySection = galleryGrid.parentElement;
+
+            if (project.galleryType === 'poster' && project.posterImages) {
+                // Poster gallery for vertical posters
+                const posterLabels = ['实力 有认证', '守护 有答案', '颜值 有担当'];
+                galleryGrid.className = 'poster-gallery';
+                galleryGrid.innerHTML = project.posterImages.map((img, i) => {
+                    return `<div class="poster-item" onclick="openLightbox('${img}')">
+                        <img src="${img}" alt="${project.title} - ${posterLabels[i] || ''}" loading="lazy">
+                        <div class="poster-label">${posterLabels[i] || '海报 ' + (i + 1)}</div>
+                    </div>`;
+                }).join('');
+
+                // Add more images section below poster gallery
+                const moreImages = project.images.filter(img => !project.posterImages.includes(img));
+                if (moreImages.length > 0) {
+                    const moreSection = document.createElement('div');
+                    moreSection.className = 'detail-section reveal';
+                    moreSection.style.marginTop = '48px';
+                    moreSection.innerHTML = `<h2 class="detail-section-title">更多作品</h2><div class="gallery-grid">${moreImages.map((img, i) => {
+                        return `<div class="gallery-item" onclick="openLightbox('${img}')">
+                            <img src="${img}" alt="${project.title} - 更多${i + 1}" loading="lazy">
+                        </div>`;
+                    }).join('')}</div>`;
+                    gallerySection.after(moreSection);
+                }
+            } else {
+                galleryGrid.className = 'gallery-grid';
+                galleryGrid.innerHTML = project.images.map((img, i) => {
+                    let cls = '';
+                    if (i === 0) cls = 'wide';
+                    return `<div class="gallery-item ${cls}" onclick="openLightbox('${img}')">
+                        <img src="${img}" alt="${project.title} - ${i + 1}" loading="lazy">
+                    </div>`;
+                }).join('');
+            }
 
             // Related projects
             const relatedIds = getProjectsByCategory(project.category).filter(pid => pid !== id).slice(0, 3);
