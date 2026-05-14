@@ -271,302 +271,104 @@
             color: var(--text-muted);
         }
 
-        /* ========== Featured Works Section ========== */
-        .featured-works {
+        /* ========== Portfolio Entry ========== */
+        .portfolio-entry {
             padding: 100px 48px;
-            position: relative;
+            background: var(--bg-primary);
         }
 
-        .featured-works-header {
-            max-width: 1400px;
-            margin: 0 auto 48px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+        .entry-header {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
-        .featured-works-title {
+        .entry-title {
             font-family: var(--font-display);
             font-size: clamp(2rem, 3.5vw, 3rem);
             font-weight: 700;
         }
 
-        .featured-works-title .thin {
+        .entry-title .thin {
             font-weight: 300;
             color: var(--text-secondary);
         }
 
-        /* ========== Featured Carousel ========== */
-        .featured-carousel-wrapper {
-            max-width: 1200px;
-            margin: 0 auto 64px;
-        }
-
-        .featured-carousel {
-            position: relative;
-            overflow: hidden;
-            border-radius: 16px;
-            background: var(--bg-card);
-            border: 1px solid rgba(139,92,246,0.1);
-        }
-
-        .featured-carousel-track {
-            display: flex;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .featured-carousel-item {
-            min-width: 100%;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 0;
-        }
-
-        .featured-carousel-image {
-            position: relative;
-            aspect-ratio: 4/3;
-            overflow: hidden;
-        }
-
-        .featured-carousel-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .featured-carousel-item:hover .featured-carousel-image img {
-            transform: scale(1.03);
-        }
-
-        .featured-carousel-content {
-            padding: 48px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: var(--bg-card);
-        }
-
-        .featured-carousel-category {
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 100px;
-            background: rgba(139,92,246,0.1);
-            border: 1px solid rgba(139,92,246,0.2);
-            font-family: var(--font-display);
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent-purple);
-            margin-bottom: 20px;
-            width: fit-content;
-        }
-
-        .featured-carousel-title {
-            font-family: var(--font-display);
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-            line-height: 1.3;
-        }
-
-        .featured-carousel-highlight {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
-
-        .featured-carousel-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
-            border-radius: 100px;
-            background: var(--gradient-main);
-            color: white;
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-decoration: none;
-            width: fit-content;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .featured-carousel-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(139,92,246,0.4);
-        }
-
-        .carousel-dots {
-            position: absolute;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-dot.active {
-            background: var(--accent-purple);
-            transform: scale(1.2);
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: var(--text-primary);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
-
-        .carousel-btn:hover {
-            background: rgba(139,92,246,0.2);
-            border-color: rgba(139,92,246,0.4);
-        }
-
-        .carousel-prev {
-            left: 16px;
-        }
-
-        .carousel-next {
-            right: 16px;
-        }
-
-        /* ========== Category Filter ========== */
-        .category-filter-wrapper {
-            max-width: 1200px;
-            margin: 0 auto 40px;
-        }
-
-        .category-filter {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 12px 24px;
-            border-radius: 100px;
-            background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-secondary);
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover {
-            background: rgba(139,92,246,0.1);
-            border-color: rgba(139,92,246,0.3);
-            color: var(--text-primary);
-        }
-
-        .filter-btn.active {
-            background: var(--gradient-main);
-            border-color: transparent;
-            color: white;
-        }
-
-        /* ========== Portfolio Grid ========== */
-        .portfolio-grid-wrapper {
+        .entry-grid {
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
         }
 
-        .portfolio-card {
+        .entry-card {
             position: relative;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             background: var(--bg-card);
             border: 1px solid rgba(139,92,246,0.1);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
             cursor: pointer;
             display: block;
             text-decoration: none;
+            aspect-ratio: 16/10;
         }
 
-        .portfolio-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.35);
-            border-color: rgba(139,92,246,0.25);
+        .entry-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+            border-color: rgba(139,92,246,0.3);
         }
 
-        .portfolio-card-image {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 4/3;
+        .entry-image {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             overflow: hidden;
         }
 
-        .portfolio-card-image img {
+        .entry-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            transition: transform 0.6s ease;
         }
 
-        .portfolio-card:hover .portfolio-card-image img {
-            transform: scale(1.05);
+        .entry-card:hover .entry-image img {
+            transform: scale(1.08);
         }
 
-        .portfolio-card-content {
-            padding: 20px;
+        .entry-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 80px 32px 32px;
+            background: linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.6) 50%, transparent 100%);
         }
 
-        .portfolio-card-title {
+        .entry-count {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 100px;
+            background: rgba(139,92,246,0.2);
             font-family: var(--font-display);
-            font-size: 1.05rem;
+            font-size: 0.75rem;
             font-weight: 600;
+            color: var(--accent-cyan);
+            margin-bottom: 12px;
+        }
+
+        .entry-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 8px;
-            line-height: 1.4;
         }
 
-        .portfolio-card-category {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 100px;
-            background: rgba(139,92,246,0.08);
-            font-size: 0.75rem;
-            color: var(--accent-purple);
-            font-weight: 500;
+        .entry-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
 
         /* ========== Contact Simple ========== */
@@ -820,15 +622,6 @@
             .big-project-card {
                 aspect-ratio: 16/9;
             }
-
-            /* Featured Carousel Tablet */
-            .featured-carousel-item {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .featured-carousel-content {
-                padding: 32px;
-            }
         }
 
         @media (max-width: 768px) {
@@ -844,89 +637,17 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .featured-works {
-                padding: 60px 24px;
+            .entry-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
             }
 
-            .featured-works-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 16px;
+            .portfolio-entry {
+                padding: 60px 24px;
             }
 
             .small-projects-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-
-            /* Featured Carousel Mobile */
-            .featured-carousel-item {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto;
-            }
-
-            .featured-carousel-image {
-                aspect-ratio: 16/10;
-            }
-
-            .featured-carousel-content {
-                padding: 24px;
-            }
-
-            .featured-carousel-title {
-                font-size: 1.25rem;
-            }
-
-            .featured-carousel-highlight {
-                font-size: 0.9rem;
-                margin-bottom: 20px;
-            }
-
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-
-            .carousel-prev {
-                left: 8px;
-            }
-
-            .carousel-next {
-                right: 8px;
-            }
-
-            /* Category Filter Mobile */
-            .category-filter-wrapper {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                padding-bottom: 8px;
-            }
-
-            .category-filter-wrapper::-webkit-scrollbar {
-                display: none;
-            }
-
-            .category-filter {
-                flex-wrap: nowrap;
-                justify-content: flex-start;
-                padding: 0 4px;
-            }
-
-            .filter-btn {
-                flex-shrink: 0;
-                padding: 10px 20px;
-                font-size: 0.85rem;
-            }
-
-            /* Portfolio Grid Mobile */
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .portfolio-card {
-                max-width: 90%;
-                margin: 0 auto;
             }
         }
 
@@ -949,10 +670,6 @@
 
             .small-projects-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .portfolio-card {
-                max-width: 100%;
             }
         }
     </style>
@@ -1132,47 +849,53 @@
         </div>
     </section>
 
-    <!-- Featured Works -->
-    <section class="featured-works" id="featured">
-        <!-- Section Header -->
-        <div class="featured-works-header reveal">
-            <div>
-                <div class="section-label">Featured Works</div>
-                <h2 class="featured-works-title">精选作品 <span class="thin">/ Selected Works</span></h2>
-            </div>
-            <a href="projects.html" class="btn-secondary">查看全部 →</a>
+    <!-- 作品四大入口 -->
+    <section class="portfolio-entry" id="portfolio">
+        <div class="entry-header reveal">
+            <div class="section-label">Portfolio</div>
+            <h2 class="entry-title">精选作品 <span class="thin">/ Selected Works</span></h2>
         </div>
-
-        <!-- 精品全案轮播区 -->
-        <div class="featured-carousel-wrapper reveal">
-            <div class="featured-carousel" id="featuredCarousel">
-                <div class="featured-carousel-track" id="carouselTrack">
-                    <!-- 轮播项目将通过JS动态生成 -->
+        <div class="entry-grid">
+            <a href="projects.html?cat=edu" class="entry-card reveal" target="_blank">
+                <div class="entry-image">
+                    <img src="assets/edu/youman-cover.png" alt="教育品牌全案">
                 </div>
-                <!-- 轮播指示器 -->
-                <div class="carousel-dots" id="carouselDots"></div>
-                <!-- 轮播控制按钮 -->
-                <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="上一个">‹</button>
-                <button class="carousel-btn carousel-next" id="carouselNext" aria-label="下一个">›</button>
-            </div>
-        </div>
-
-        <!-- 类目筛选导航区 -->
-        <div class="category-filter-wrapper reveal">
-            <div class="category-filter" id="categoryFilter">
-                <button class="filter-btn active" data-category="all">全部</button>
-                <button class="filter-btn" data-category="品牌全案">品牌全案</button>
-                <button class="filter-btn" data-category="IP形象">IP形象</button>
-                <button class="filter-btn" data-category="电商视觉">电商视觉</button>
-                <button class="filter-btn" data-category="AIGC创意">AIGC创意</button>
-            </div>
-        </div>
-
-        <!-- 网格作品墙 -->
-        <div class="portfolio-grid-wrapper reveal">
-            <div class="portfolio-grid" id="portfolioGrid">
-                <!-- 作品卡片将通过JS动态生成 -->
-            </div>
+                <div class="entry-overlay">
+                    <div class="entry-count">24+</div>
+                    <h3 class="entry-name">教育品牌全案</h3>
+                    <p class="entry-desc">品牌升级 · IP设计 · 新媒体视觉</p>
+                </div>
+            </a>
+            <a href="projects.html?cat=auto" class="entry-card reveal" target="_blank">
+                <div class="entry-image">
+                    <img src="assets/auto/profilm-v1.jpg" alt="汽车宣传物料">
+                </div>
+                <div class="entry-overlay">
+                    <div class="entry-count">12+</div>
+                    <h3 class="entry-name">汽车宣传物料</h3>
+                    <p class="entry-desc">品牌海报 · 长图文 · 产品视觉</p>
+                </div>
+            </a>
+            <a href="projects.html?cat=ecom" class="entry-card reveal" target="_blank">
+                <div class="entry-image">
+                    <img src="assets/ecom/54.jpg" alt="智能POS商业全案">
+                </div>
+                <div class="entry-overlay">
+                    <div class="entry-count">7+</div>
+                    <h3 class="entry-name">智能POS商业全案</h3>
+                    <p class="entry-desc">电商视觉 · 产品包装 · 展会物料</p>
+                </div>
+            </a>
+            <a href="projects.html?cat=creative" class="entry-card reveal" target="_blank">
+                <div class="entry-image">
+                    <img src="assets/edu/30.jpg" alt="创意概念视觉">
+                </div>
+                <div class="entry-overlay">
+                    <div class="entry-count">15+</div>
+                    <h3 class="entry-name">创意概念视觉</h3>
+                    <p class="entry-desc">AIGC创意 · 概念海报 · 字体设计</p>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -1321,284 +1044,6 @@
                 }
             });
         });
-
-        // ========== Portfolio Data ==========
-        const portfolioData = {
-            featured: [
-                {
-                    id: 'youman-brand',
-                    title: '优漫品牌设计升级全案',
-                    category: '品牌全案',
-                    highlight: 'LOGO+IP吉祥物+VI系统全案设计',
-                    image: 'assets/edu/youman-cover.png',
-                    link: 'project-detail.html?id=youman-brand&cat=edu'
-                },
-                {
-                    id: 'profilm-brand',
-                    title: '浦诺菲尊膜品牌长图文',
-                    category: '品牌全案',
-                    highlight: '实力/守护/颜值三大核心主题长图文',
-                    image: 'assets/auto/profilm-v1.jpg',
-                    link: 'project-detail.html?id=profilm-brand&cat=auto'
-                },
-                {
-                    id: 'wanshun',
-                    title: '万顺新材品牌全案',
-                    category: '品牌全案',
-                    highlight: '隔热膜+改色膜双产品线视觉设计',
-                    image: 'assets/auto/46.jpg',
-                    link: 'project-detail.html?id=wanshun&cat=auto'
-                },
-                {
-                    id: 'youman-ai',
-                    title: 'AIGC创意节气海报',
-                    category: 'AIGC创意',
-                    highlight: 'AI赋能传统节气视觉创新表达',
-                    image: 'assets/edu/30.jpg',
-                    link: 'project-detail.html?id=youman-ai&cat=edu'
-                }
-            ],
-            all: [
-                // 品牌全案类
-                { id: 'youman-brand', title: '优漫品牌设计升级全案', category: '品牌全案', image: 'assets/edu/youman-cover.png', link: 'project-detail.html?id=youman-brand&cat=edu' },
-                { id: 'profilm-brand', title: '浦诺菲尊膜品牌长图文', category: '品牌全案', image: 'assets/auto/profilm-v1.jpg', link: 'project-detail.html?id=profilm-brand&cat=auto' },
-                { id: 'wanshun', title: '万顺新材品牌全案', category: '品牌全案', image: 'assets/auto/46.jpg', link: 'project-detail.html?id=wanshun&cat=auto' },
-                { id: 'hanshan', title: '航天山由品牌设计', category: '品牌全案', image: 'assets/auto/50.jpg', link: 'project-detail.html?id=hanshan&cat=auto' },
-                { id: 'yuanshuai', title: '元帅火花塞品牌设计', category: '品牌全案', image: 'assets/auto/51.jpg', link: 'project-detail.html?id=yuanshuai&cat=auto' },
-
-                // IP形象类
-                { id: 'youman-ip', title: 'U仔IP形象设计', category: 'IP形象', image: 'assets/edu/07.jpg', link: 'project-detail.html?id=youman-ip&cat=edu' },
-
-                // 电商视觉类
-                { id: 'cendo', title: '自然堂店铺专题页', category: '电商视觉', image: 'assets/ecom/52.jpg', link: 'project-detail.html?id=cendo&cat=ecom' },
-                { id: 'cendo-promo', title: '自然堂年中促销页', category: '电商视觉', image: 'assets/ecom/54.jpg', link: 'project-detail.html?id=cendo-promo&cat=ecom' },
-                { id: 'amazon', title: '亚马逊运营主图', category: '电商视觉', image: 'assets/ecom/58.jpg', link: 'project-detail.html?id=amazon&cat=ecom' },
-
-                // AIGC创意类
-                { id: 'youman-ai', title: 'AIGC创意节气海报', category: 'AIGC创意', image: 'assets/edu/30.jpg', link: 'project-detail.html?id=youman-ai&cat=edu' },
-                { id: 'aigc-design', title: 'AIGC设计类目', category: 'AIGC创意', image: 'assets/other/59.jpg', link: 'project-detail.html?id=aigc-design&cat=other' }
-            ]
-        };
-
-        // ========== Featured Carousel ==========
-        (function() {
-            const track = document.getElementById('carouselTrack');
-            const dotsContainer = document.getElementById('carouselDots');
-            const prevBtn = document.getElementById('carouselPrev');
-            const nextBtn = document.getElementById('carouselNext');
-            const carousel = document.getElementById('featuredCarousel');
-
-            if (!track || !dotsContainer) return;
-
-            const items = portfolioData.featured;
-            let currentIndex = 0;
-            let autoplayInterval = null;
-            let isHovering = false;
-
-            // Render carousel items
-            function renderCarousel() {
-                track.innerHTML = items.map((item, index) => `
-                    <div class="featured-carousel-item" data-index="${index}">
-                        <a href="${item.link}" class="featured-carousel-image">
-                            <img src="${item.image}" alt="${item.title}" loading="${index === 0 ? 'eager' : 'lazy'}">
-                        </a>
-                        <div class="featured-carousel-content">
-                            <span class="featured-carousel-category">${item.category}</span>
-                            <h3 class="featured-carousel-title">${item.title}</h3>
-                            <p class="featured-carousel-highlight">${item.highlight}</p>
-                            <a href="${item.link}" class="featured-carousel-btn">
-                                查看详情
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                `).join('');
-
-                // Render dots
-                dotsContainer.innerHTML = items.map((_, index) => `
-                    <button class="carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}" aria-label="切换到第${index + 1}个项目"></button>
-                `).join('');
-            }
-
-            // Update carousel position
-            function updateCarousel() {
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-                // Update dots
-                const dots = dotsContainer.querySelectorAll('.carousel-dot');
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
-            }
-
-            // Go to specific slide
-            function goToSlide(index) {
-                currentIndex = index;
-                if (currentIndex < 0) currentIndex = items.length - 1;
-                if (currentIndex >= items.length) currentIndex = 0;
-                updateCarousel();
-            }
-
-            // Next slide
-            function nextSlide() {
-                goToSlide(currentIndex + 1);
-            }
-
-            // Previous slide
-            function prevSlide() {
-                goToSlide(currentIndex - 1);
-            }
-
-            // Start autoplay
-            function startAutoplay() {
-                if (autoplayInterval) clearInterval(autoplayInterval);
-                autoplayInterval = setInterval(() => {
-                    if (!isHovering) {
-                        nextSlide();
-                    }
-                }, 5000);
-            }
-
-            // Stop autoplay
-            function stopAutoplay() {
-                if (autoplayInterval) {
-                    clearInterval(autoplayInterval);
-                    autoplayInterval = null;
-                }
-            }
-
-            // Event listeners
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    prevSlide();
-                    startAutoplay();
-                });
-            }
-
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    nextSlide();
-                    startAutoplay();
-                });
-            }
-
-            if (dotsContainer) {
-                dotsContainer.addEventListener('click', (e) => {
-                    if (e.target.classList.contains('carousel-dot')) {
-                        const index = parseInt(e.target.dataset.index);
-                        goToSlide(index);
-                        startAutoplay();
-                    }
-                });
-            }
-
-            if (carousel) {
-                carousel.addEventListener('mouseenter', () => {
-                    isHovering = true;
-                });
-
-                carousel.addEventListener('mouseleave', () => {
-                    isHovering = false;
-                });
-
-                // Touch support for mobile swipe
-                let touchStartX = 0;
-                let touchEndX = 0;
-
-                carousel.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
-                }, { passive: true });
-
-                carousel.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe();
-                }, { passive: true });
-
-                function handleSwipe() {
-                    const swipeThreshold = 50;
-                    const diff = touchStartX - touchEndX;
-
-                    if (diff > swipeThreshold) {
-                        nextSlide();
-                        startAutoplay();
-                    } else if (diff < -swipeThreshold) {
-                        prevSlide();
-                        startAutoplay();
-                    }
-                }
-            }
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') {
-                    prevSlide();
-                    startAutoplay();
-                } else if (e.key === 'ArrowRight') {
-                    nextSlide();
-                    startAutoplay();
-                }
-            });
-
-            // Initialize
-            renderCarousel();
-            startAutoplay();
-        })();
-
-        // ========== Portfolio Grid with Filter ==========
-        (function() {
-            const grid = document.getElementById('portfolioGrid');
-            const filterBtns = document.querySelectorAll('.filter-btn');
-
-            if (!grid) return;
-
-            let currentCategory = 'all';
-
-            // Render portfolio cards
-            function renderPortfolio(category) {
-                const filteredItems = category === 'all'
-                    ? portfolioData.all
-                    : portfolioData.all.filter(item => item.category === category);
-
-                grid.innerHTML = filteredItems.map((item, index) => `
-                    <a href="${item.link}" class="portfolio-card" data-category="${item.category}" style="animation-delay: ${index * 0.05}s">
-                        <div class="portfolio-card-image">
-                            <img src="${item.image}" alt="${item.title}" loading="lazy">
-                        </div>
-                        <div class="portfolio-card-content">
-                            <h4 class="portfolio-card-title">${item.title}</h4>
-                            <span class="portfolio-card-category">${item.category}</span>
-                        </div>
-                    </a>
-                `).join('');
-
-                // Trigger animation
-                requestAnimationFrame(() => {
-                    grid.querySelectorAll('.portfolio-card').forEach(card => {
-                        card.classList.add('animate-in');
-                    });
-                });
-            }
-
-            // Handle filter click
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const category = btn.dataset.category;
-
-                    // Update active state
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-
-                    // Render filtered portfolio
-                    currentCategory = category;
-                    renderPortfolio(category);
-                });
-            });
-
-            // Initialize
-            renderPortfolio('all');
-        })();
     </script>
 </body>
 </html>

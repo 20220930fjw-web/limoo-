@@ -96,82 +96,111 @@
             z-index: 2;
         }
 
-        /* ========== Project Stats ========== */
-        .project-stats {
+        /* ========== Category Navigation ========== */
+        .main-category-nav {
             max-width: 1200px;
-            margin: 0 auto 60px;
+            margin: 0 auto 40px;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            gap: 20px;
         }
 
-        .stat-item {
-            text-align: center;
-            padding: 32px 24px;
+        .main-cat-btn {
+            position: relative;
+            padding: 24px 20px;
+            border-radius: 16px;
             background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: var(--transition);
+            border: 1px solid rgba(139,92,246,0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
         }
 
-        .stat-item:hover {
-            border-color: rgba(255, 255, 255, 0.12);
-            transform: translateY(-4px);
-        }
-
-        .stat-number {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            font-weight: 700;
+        .main-cat-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 4px;
+        .main-cat-btn:hover,
+        .main-cat-btn.active {
+            border-color: rgba(139,92,246,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
         }
 
-        /* ========== Category Tabs ========== */
-        .category-tabs {
+        .main-cat-btn.active::before {
+            opacity: 0.15;
+        }
+
+        .main-cat-btn .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .main-cat-btn .name {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            position: relative;
+        }
+
+        .main-cat-btn .count {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            position: relative;
+        }
+
+        /* ========== Sub Category Navigation ========== */
+        .sub-category-nav {
             max-width: 1200px;
             margin: 0 auto 48px;
             display: flex;
-            gap: 16px;
+            gap: 12px;
             flex-wrap: wrap;
             justify-content: center;
+            padding: 20px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.06);
         }
 
-        .tab-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
+        .sub-cat-btn {
+            padding: 10px 20px;
             border-radius: 100px;
             background: transparent;
             border: 1px solid rgba(255,255,255,0.1);
             color: var(--text-secondary);
             font-family: var(--font-display);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s ease;
         }
 
-        .tab-btn:hover,
-        .tab-btn.active {
+        .sub-cat-btn:hover {
+            background: rgba(139,92,246,0.1);
+            border-color: rgba(139,92,246,0.3);
+            color: var(--text-primary);
+        }
+
+        .sub-cat-btn.active {
             background: var(--gradient-main);
             border-color: transparent;
             color: #fff;
         }
 
-        .tab-btn .count {
-            background: rgba(255,255,255,0.2);
-            padding: 2px 8px;
-            border-radius: 100px;
+        .sub-cat-btn .count {
+            margin-left: 6px;
+            opacity: 0.7;
             font-size: 0.75rem;
         }
 
@@ -348,6 +377,10 @@
             .projects-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .main-category-nav {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
@@ -363,18 +396,31 @@
                 grid-template-columns: 1fr;
             }
 
-            .project-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
+            .main-category-nav {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
             }
 
-            .category-tabs {
-                gap: 10px;
+            .main-cat-btn {
+                padding: 16px 12px;
             }
 
-            .tab-btn {
-                padding: 10px 20px;
+            .main-cat-btn .icon {
+                font-size: 1.5rem;
+            }
+
+            .main-cat-btn .name {
                 font-size: 0.85rem;
+            }
+
+            .sub-category-nav {
+                gap: 8px;
+                padding: 16px;
+            }
+
+            .sub-cat-btn {
+                padding: 8px 14px;
+                font-size: 0.8rem;
             }
 
             .related-cta {
@@ -433,374 +479,45 @@
             <h1 class="page-hero-title">设计作品集</h1>
             <p class="page-hero-desc">
                 从品牌视觉到数字体验，用设计讲述品牌故事。<br>
-                涵盖教育、汽车、美妆、科技智能等多个领域的品牌设计作品。
+                涵盖教育、汽车、电商、创意等多个领域的品牌设计作品。
             </p>
         </div>
     </section>
 
     <!-- Portfolio Section -->
     <section class="portfolio-section">
-        <!-- Stats -->
-        <div class="project-stats reveal">
-            <div class="stat-item">
-                <div class="stat-number">66</div>
-                <div class="stat-label">设计作品</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">5</div>
-                <div class="stat-label">专业领域</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">15+</div>
-                <div class="stat-label">合作品牌</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">4-5</div>
-                <div class="stat-label">年设计经验</div>
-            </div>
+        <!-- Main Category Navigation -->
+        <div class="main-category-nav reveal" id="mainCategoryNav">
+            <button class="main-cat-btn active" data-category="edu">
+                <span class="icon">🎓</span>
+                <div class="name">教育品牌全案</div>
+                <div class="count">24+ 项目</div>
+            </button>
+            <button class="main-cat-btn" data-category="auto">
+                <span class="icon">🚗</span>
+                <div class="name">汽车宣传物料</div>
+                <div class="count">12+ 项目</div>
+            </button>
+            <button class="main-cat-btn" data-category="ecom">
+                <span class="icon">💼</span>
+                <div class="name">智能POS商业全案</div>
+                <div class="count">7+ 项目</div>
+            </button>
+            <button class="main-cat-btn" data-category="creative">
+                <span class="icon">✨</span>
+                <div class="name">创意概念视觉</div>
+                <div class="count">15+ 项目</div>
+            </button>
         </div>
 
-        <!-- Category Tabs -->
-        <div class="category-tabs reveal">
-            <button class="tab-btn active" data-filter="all">
-                <span>🎯</span> 全部作品 <span class="count">66</span>
-            </button>
-            <button class="tab-btn" data-filter="edu">
-                <span>🎓</span> 教育品牌 <span class="count">24</span>
-            </button>
-            <button class="tab-btn" data-filter="auto">
-                <span>🚗</span> 汽车品牌 <span class="count">12</span>
-            </button>
-            <button class="tab-btn" data-filter="ecom">
-                <span>🛒</span> 美妆护肤 <span class="count">7</span>
-            </button>
-            <button class="tab-btn" data-filter="tech">
-                <span>💻</span> 科技智能 <span class="count">8</span>
-            </button>
-            <button class="tab-btn" data-filter="other">
-                <span>🌍</span> 其他项目 <span class="count">15</span>
-            </button>
+        <!-- Sub Category Navigation -->
+        <div class="sub-category-nav reveal" id="subCategoryNav">
+            <!-- Sub categories will be rendered by JS -->
         </div>
 
         <!-- Projects Grid -->
-        <div class="projects-grid" id="projectsGrid">
-            <!-- 教育品牌 Projects -->
-            <a href="project-detail.html?id=youman-brand&cat=edu" class="project-card reveal" data-category="edu">
-                <div class="card-image">
-                    <img src="assets/edu/youman-cover.png" alt="优漫品牌设计升级全案" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">教育品牌</div>
-                    <h3 class="card-title">优漫品牌设计升级全案</h3>
-                    <p class="card-desc">全新品牌视觉识别系统，涵盖LOGO、IP吉祥物设计及IP动作延展、品牌色彩体系及应用规范。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">品牌VI</span>
-                        <span class="card-tag">IP吉祥物</span>
-                        <span class="card-tag">IP动作延展</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="project-detail.html?id=youman-ai&cat=edu" class="project-card reveal" data-category="edu">
-                <div class="card-image">
-                    <img src="assets/edu/30.jpg" alt="AIGC节气海报" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">AIGC设计</div>
-                    <h3 class="card-title">AIGC节气海报系列</h3>
-                    <p class="card-desc">运用AIGC技术创作节气海报，大寒/小年/雨水/除夕等主题。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">AIGC</span>
-                        <span class="card-tag">Midjourney</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="project-detail.html?id=youman-web&cat=edu" class="project-card reveal" data-category="edu">
-                <div class="card-image">
-                    <img src="assets/edu/34.jpg" alt="官网设计" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">Web设计</div>
-                    <h3 class="card-title">优漫教育官网设计</h3>
-                    <p class="card-desc">平板/笔记本/手机三端响应式官方网站设计。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">官网</span>
-                        <span class="card-tag">响应式</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="project-detail.html?id=youman-poster&cat=edu" class="project-card reveal" data-category="edu">
-                <div class="card-image">
-                    <img src="assets/edu/29.jpg" alt="手绘节日海报" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">节日海报</div>
-                    <h3 class="card-title">手绘节日海报系列</h3>
-                    <p class="card-desc">五一/中秋/国庆/七夕等节日手绘海报，融合IP形象与手绘风格。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">手绘</span>
-                        <span class="card-tag">节日营销</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="project-detail.html?id=youjob-brand&cat=edu" class="project-card reveal" data-category="edu">
-                <div class="card-image">
-                    <img src="assets/edu/21.jpg" alt="优就业品牌设计" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">教育品牌</div>
-                    <h3 class="card-title">优就业品牌设计</h3>
-                    <p class="card-desc">LOGO提案、VI应用、办公文具及产品包装设计。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">品牌VI</span>
-                        <span class="card-tag">LOGO</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- 汽车品牌 Projects -->
-            <a href="project-detail.html?id=profilm-brand&cat=auto" class="project-card reveal" data-category="auto">
-                <div class="card-image">
-                    <img src="assets/auto/profilm-v1.jpg" alt="浦诺菲尊膜品牌长图文" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">汽车品牌</div>
-                    <h3 class="card-title">浦诺菲尊膜品牌长图文</h3>
-                    <p class="card-desc">品牌传播长图文系列，以实力/守护/颜值为核心主题，沉浸式品牌体验设计。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">长图文</span>
-                        <span class="card-tag">品牌传播</span>
-                        <span class="card-tag">汽车膜</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="project-detail.html?id=profilm-product&cat=auto" class="project-card reveal" data-category="auto">
-                <div class="card-image">
-                    <img src="assets/auto/profilm-v8.jpg" alt="浦诺菲产品长图文系列" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">汽车品牌</div>
-                    <h3 class="card-title">浦诺菲产品长图文系列</h3>
-                    <p class="card-desc">产品长图文矩阵，深度展示炫彩车衣、隐形车衣、前挡膜等核心产品线卖点。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">长图文</span>
-                        <span class="card-tag">产品展示</span>
-                        <span class="card-tag">多产品线</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="project-detail.html?id=wanshun&cat=auto" class="project-card reveal" data-category="auto">
-                <div class="card-image">
-                    <img src="assets/auto/46.jpg" alt="万顺新材品牌全案" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">汽车品牌</div>
-                    <h3 class="card-title">万顺新材品牌全案</h3>
-                    <p class="card-desc">汽车隔热膜与晶彩改色膜产品海报设计，展示差异化产品优势与丰富色彩选择。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">隔热膜</span>
-                        <span class="card-tag">改色膜</span>
-                        <span class="card-tag">产品海报</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="project-detail.html?id=hanshan&cat=auto" class="project-card reveal" data-category="auto">
-                <div class="card-image">
-                    <img src="assets/auto/50.jpg" alt="航天山由品牌设计" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">汽车品牌</div>
-                    <h3 class="card-title">航天山由品牌设计</h3>
-                    <p class="card-desc">窗膜卖点、技术革新、颜值提升系列品牌海报，科技感视觉传达。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">品牌海报</span>
-                        <span class="card-tag">窗膜</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="project-detail.html?id=yuanshuai&cat=auto" class="project-card reveal" data-category="auto">
-                <div class="card-image">
-                    <img src="assets/auto/51.jpg" alt="元帅火花塞品牌设计" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">汽车品牌</div>
-                    <h3 class="card-title">元帅火花塞品牌设计</h3>
-                    <p class="card-desc">33年历史、39项专利、600+SKU、1.2亿产能数据可视化海报设计。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">数据可视化</span>
-                        <span class="card-tag">品牌海报</span>
-                    </div>
-                </div>
-            </a>
-                    <div class="card-tags">
-                        <span class="card-tag">数据可视化</span>
-                        <span class="card-tag">火花塞</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- 电商品牌 Projects -->
-            <a href="project-detail.html?id=chando&cat=ecom" class="project-card reveal" data-category="ecom">
-                <div class="card-image">
-                    <img src="assets/ecom/52.jpg" alt="自然堂专题页" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">电商品牌</div>
-                    <h3 class="card-title">自然堂店铺专题页</h3>
-                    <p class="card-desc">美妆品牌电商专题页&BANNER设计，MacBook样机展示。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">专题页</span>
-                        <span class="card-tag">BANNER</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="project-detail.html?id=chando-promo&cat=ecom" class="project-card reveal" data-category="ecom">
-                <div class="card-image">
-                    <img src="assets/ecom/54.jpg" alt="自然堂年中促销" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">促销设计</div>
-                    <h3 class="card-title">自然堂年中促销页</h3>
-                    <p class="card-desc">国潮风牌坊/优惠券/套装推荐，国潮风格与美妆品牌结合。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">国潮风</span>
-                        <span class="card-tag">促销页</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="project-detail.html?id=amazon&cat=ecom" class="project-card reveal" data-category="ecom">
-                <div class="card-image">
-                    <img src="assets/ecom/58.jpg" alt="亚马逊运营主图" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">跨境电商</div>
-                    <h3 class="card-title">亚马逊运营主图</h3>
-                    <p class="card-desc">雨刮胶条产品6张主图设计，功能/卖点/尺寸/场景展示。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">亚马逊</span>
-                        <span class="card-tag">产品主图</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- 其他项目 Projects -->
-            <a href="project-detail.html?id=aigc-design&cat=other" class="project-card reveal" data-category="other">
-                <div class="card-image">
-                    <img src="assets/other/60.jpg" alt="AIGC设计类目" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">AIGC创意</div>
-                    <h3 class="card-title">AIGC设计类目</h3>
-                    <p class="card-desc">黄金周/露营/夏日出游/五一促销5张AIGC海报探索。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">AIGC</span>
-                        <span class="card-tag">Midjourney</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="project-detail.html?id=aigc-portfolio&cat=other" class="project-card reveal" data-category="other">
-                <div class="card-image">
-                    <img src="assets/other/64.jpg" alt="AIGC赋能作品集" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">AIGC创意</div>
-                    <h3 class="card-title">AIGC赋能作品集</h3>
-                    <p class="card-desc">香水/IP形象/耳机/赛博朋克场景6组AIGC创作展示。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">AIGC</span>
-                        <span class="card-tag">多元创作</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="project-detail.html?id=3d-design&cat=other" class="project-card reveal" data-category="other">
-                <div class="card-image">
-                    <img src="assets/other/65.jpg" alt="拟物化设计" loading="lazy">
-                </div>
-                <div class="card-overlay"></div>
-                <div class="card-view">
-                    <div class="card-view-btn">查看详情 →</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">3D设计</div>
-                    <h3 class="card-title">拟物化设计系列</h3>
-                    <p class="card-desc">嗨翻黄金周/好工作野路子/户外露营3张3D拟物化海报。</p>
-                    <div class="card-tags">
-                        <span class="card-tag">3D设计</span>
-                        <span class="card-tag">Blender</span>
-                    </div>
-                </div>
-            </a>
+        <div class="projects-grid reveal" id="projectsGrid">
+            <!-- Projects will be rendered by JS -->
         </div>
 
         <!-- CTA -->
@@ -823,43 +540,255 @@
 
     <script src="assets/js/common.js"></script>
     <script>
-        // Tab Filter
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const projectCards = document.querySelectorAll('.project-card');
+        // ========== Category & Project Data ==========
+        const categoryData = {
+            edu: {
+                name: '教育品牌全案',
+                subCategories: [
+                    { id: 'edu-brand', name: '品牌升级全案', count: 5 },
+                    { id: 'edu-ip', name: 'IP形象设计', count: 4 },
+                    { id: 'edu-sub', name: '子品牌视觉', count: 3 },
+                    { id: 'edu-poster', name: '新媒体视觉海报', count: 6 },
+                    { id: 'edu-long', name: '微信长图文设计', count: 4 },
+                    { id: 'edu-ppt', name: '讲师包装PPT设计', count: 2 }
+                ],
+                projects: [
+                    // 品牌升级全案
+                    { id: 'youman-brand', subCat: 'edu-brand', title: '优漫品牌设计升级全案', desc: '全新品牌视觉识别系统，涵盖LOGO、IP吉祥物设计及IP动作延展、品牌色彩体系及应用规范。', image: 'assets/edu/youman-cover.png', tags: ['品牌VI', 'IP吉祥物', 'IP动作延展'] },
+                    { id: 'youjob-brand', subCat: 'edu-brand', title: '优就业品牌设计', desc: 'LOGO提案、VI应用、办公文具及产品包装设计。', image: 'assets/edu/21.jpg', tags: ['品牌VI', 'LOGO'] },
+                    { id: 'youman-vi', subCat: 'edu-brand', title: '优漫VI应用延展', desc: '品牌VI系统应用延展设计，办公文具、宣传物料等。', image: 'assets/edu/01.jpg', tags: ['VI延展', '办公文具'] },
+                    { id: 'youman-color', subCat: 'edu-brand', title: '优漫品牌色彩体系', desc: '品牌色彩规范与应用指南设计。', image: 'assets/edu/02.jpg', tags: ['色彩体系', '品牌规范'] },
+                    { id: 'youman-logo', subCat: 'edu-brand', title: '优漫LOGO设计提案', desc: '品牌LOGO多方案提案设计。', image: 'assets/edu/03.jpg', tags: ['LOGO', '提案'] },
+                    // IP形象设计
+                    { id: 'youman-ip', subCat: 'edu-ip', title: 'U仔IP形象设计', desc: '品牌IP吉祥物U仔形象设计，包含多表情、多动作延展。', image: 'assets/edu/07.jpg', tags: ['IP形象', '吉祥物', '表情延展'] },
+                    { id: 'youman-ip-action', subCat: 'edu-ip', title: 'U仔IP动作延展', desc: 'IP形象多场景动作延展设计。', image: 'assets/edu/08.jpg', tags: ['IP延展', '动作设计'] },
+                    { id: 'youman-ip-emoji', subCat: 'edu-ip', title: 'U仔表情包设计', desc: '品牌IP表情包系列设计。', image: 'assets/edu/09.jpg', tags: ['表情包', 'IP延展'] },
+                    { id: 'youman-ip-scene', subCat: 'edu-ip', title: 'U仔场景应用', desc: 'IP形象在不同场景的应用设计。', image: 'assets/edu/10.jpg', tags: ['场景应用', 'IP延展'] },
+                    // 子品牌视觉
+                    { id: 'youman-sub1', subCat: 'edu-sub', title: '子品牌视觉设计A', desc: '子品牌视觉系统设计。', image: 'assets/edu/11.jpg', tags: ['子品牌', 'VI设计'] },
+                    { id: 'youman-sub2', subCat: 'edu-sub', title: '子品牌视觉设计B', desc: '子品牌视觉系统设计。', image: 'assets/edu/12.jpg', tags: ['子品牌', 'VI设计'] },
+                    { id: 'youman-sub3', subCat: 'edu-sub', title: '子品牌视觉设计C', desc: '子品牌视觉系统设计。', image: 'assets/edu/13.jpg', tags: ['子品牌', 'VI设计'] },
+                    // 新媒体视觉海报
+                    { id: 'youman-ai', subCat: 'edu-poster', title: 'AIGC节气海报系列', desc: '运用AIGC技术创作节气海报，大寒/小年/雨水/除夕等主题。', image: 'assets/edu/30.jpg', tags: ['AIGC', '节气海报'] },
+                    { id: 'youman-poster', subCat: 'edu-poster', title: '手绘节日海报系列', desc: '五一/中秋/国庆/七夕等节日手绘海报，融合IP形象与手绘风格。', image: 'assets/edu/29.jpg', tags: ['手绘', '节日营销'] },
+                    { id: 'youman-newyear', subCat: 'edu-poster', title: '新年主题海报', desc: '新年主题视觉海报设计。', image: 'assets/edu/31.jpg', tags: ['节日海报', '新年'] },
+                    { id: 'youman-activity', subCat: 'edu-poster', title: '活动宣传海报', desc: '品牌活动宣传海报设计。', image: 'assets/edu/32.jpg', tags: ['活动海报', '宣传'] },
+                    { id: 'youman-promo', subCat: 'edu-poster', title: '促销活动海报', desc: '促销活动视觉设计。', image: 'assets/edu/33.jpg', tags: ['促销', '活动海报'] },
+                    { id: 'youman-season', subCat: 'edu-poster', title: '季节主题海报', desc: '四季主题海报设计。', image: 'assets/edu/34.jpg', tags: ['季节主题', '海报'] },
+                    // 微信长图文设计
+                    { id: 'youman-long1', subCat: 'edu-long', title: '品牌介绍长图文', desc: '品牌介绍微信长图文设计。', image: 'assets/edu/35.jpg', tags: ['长图文', '微信'] },
+                    { id: 'youman-long2', subCat: 'edu-long', title: '产品介绍长图文', desc: '产品介绍微信长图文设计。', image: 'assets/edu/36.jpg', tags: ['长图文', '产品'] },
+                    { id: 'youman-long3', subCat: 'edu-long', title: '活动推广长图文', desc: '活动推广微信长图文设计。', image: 'assets/edu/37.jpg', tags: ['长图文', '活动'] },
+                    { id: 'youman-long4', subCat: 'edu-long', title: '节日祝福长图文', desc: '节日祝福微信长图文设计。', image: 'assets/edu/38.jpg', tags: ['长图文', '节日'] },
+                    // 讲师包装PPT设计
+                    { id: 'youman-ppt1', subCat: 'edu-ppt', title: '讲师形象包装', desc: '讲师个人形象视觉包装设计。', image: 'assets/edu/39.jpg', tags: ['讲师包装', '形象设计'] },
+                    { id: 'youman-ppt2', subCat: 'edu-ppt', title: '课程PPT模板', desc: '课程PPT模板设计。', image: 'assets/edu/40.jpg', tags: ['PPT', '模板设计'] }
+                ]
+            },
+            auto: {
+                name: '汽车宣传物料',
+                subCategories: [
+                    { id: 'auto-poster', name: '品牌宣传海报', count: 4 },
+                    { id: 'auto-long', name: '微信长图文物料', count: 4 },
+                    { id: 'auto-film', name: '汽车膜品牌视觉', count: 3 },
+                    { id: 'auto-parts', name: '汽配产品宣传物料', count: 3 }
+                ],
+                projects: [
+                    // 品牌宣传海报
+                    { id: 'profilm-brand', subCat: 'auto-poster', title: '浦诺菲尊膜品牌海报', desc: '品牌传播海报系列，实力/守护/颜值为核心主题。', image: 'assets/auto/profilm-v1.jpg', tags: ['品牌海报', '汽车膜'] },
+                    { id: 'wanshun', subCat: 'auto-poster', title: '万顺新材品牌海报', desc: '汽车隔热膜与晶彩改色膜产品海报设计。', image: 'assets/auto/46.jpg', tags: ['隔热膜', '改色膜'] },
+                    { id: 'hanshan', subCat: 'auto-poster', title: '航天山由品牌海报', desc: '窗膜卖点、技术革新、颜值提升系列品牌海报。', image: 'assets/auto/50.jpg', tags: ['品牌海报', '窗膜'] },
+                    { id: 'yuanshuai', subCat: 'auto-poster', title: '元帅火花塞品牌海报', desc: '33年历史、39项专利数据可视化海报设计。', image: 'assets/auto/51.jpg', tags: ['数据可视化', '火花塞'] },
+                    // 微信长图文物料
+                    { id: 'profilm-long1', subCat: 'auto-long', title: '浦诺菲品牌长图文', desc: '品牌传播长图文系列，沉浸式品牌体验设计。', image: 'assets/auto/profilm-v1.jpg', tags: ['长图文', '品牌传播'] },
+                    { id: 'profilm-long2', subCat: 'auto-long', title: '浦诺菲产品长图文', desc: '产品长图文矩阵，深度展示核心产品线卖点。', image: 'assets/auto/profilm-v8.jpg', tags: ['长图文', '产品展示'] },
+                    { id: 'wanshun-long', subCat: 'auto-long', title: '万顺新材长图文', desc: '产品长图文介绍设计。', image: 'assets/auto/47.jpg', tags: ['长图文', '产品'] },
+                    { id: 'hanshan-long', subCat: 'auto-long', title: '航天山由长图文', desc: '品牌长图文宣传设计。', image: 'assets/auto/48.jpg', tags: ['长图文', '品牌'] },
+                    // 汽车膜品牌视觉
+                    { id: 'film-visual1', subCat: 'auto-film', title: '隐形车衣视觉', desc: '隐形车衣产品视觉设计。', image: 'assets/auto/49.jpg', tags: ['隐形车衣', '产品视觉'] },
+                    { id: 'film-visual2', subCat: 'auto-film', title: '隔热膜视觉', desc: '隔热膜产品视觉设计。', image: 'assets/auto/50.jpg', tags: ['隔热膜', '产品视觉'] },
+                    { id: 'film-visual3', subCat: 'auto-film', title: '改色膜视觉', desc: '改色膜产品视觉设计。', image: 'assets/auto/51.jpg', tags: ['改色膜', '产品视觉'] },
+                    // 汽配产品宣传物料
+                    { id: 'parts-visual1', subCat: 'auto-parts', title: '火花塞宣传物料', desc: '火花塞产品宣传物料设计。', image: 'assets/auto/52.jpg', tags: ['火花塞', '宣传物料'] },
+                    { id: 'parts-visual2', subCat: 'auto-parts', title: '雨刮器宣传物料', desc: '雨刮器产品宣传物料设计。', image: 'assets/auto/53.jpg', tags: ['雨刮器', '宣传物料'] },
+                    { id: 'parts-visual3', subCat: 'auto-parts', title: '汽车配件综合物料', desc: '汽车配件综合宣传物料设计。', image: 'assets/auto/54.jpg', tags: ['汽配', '宣传物料'] }
+                ]
+            },
+            ecom: {
+                name: '智能POS商业全案',
+                subCategories: [
+                    { id: 'ecom-visual', name: '电商视觉', count: 3 },
+                    { id: 'ecom-pack', name: '产品包装', count: 2 },
+                    { id: 'ecom-logo', name: '品牌LOGO定制', count: 1 },
+                    { id: 'ecom-expo', name: '线下展会物料', count: 1 },
+                    { id: 'ecom-wallpaper', name: '品牌主题壁纸', count: 1 }
+                ],
+                projects: [
+                    // 电商视觉
+                    { id: 'chando', subCat: 'ecom-visual', title: '自然堂店铺专题页', desc: '美妆品牌电商专题页&BANNER设计。', image: 'assets/ecom/52.jpg', tags: ['专题页', 'BANNER'] },
+                    { id: 'chando-promo', subCat: 'ecom-visual', title: '自然堂年中促销页', desc: '国潮风牌坊/优惠券/套装推荐设计。', image: 'assets/ecom/54.jpg', tags: ['国潮风', '促销页'] },
+                    { id: 'amazon', subCat: 'ecom-visual', title: '亚马逊运营主图', desc: '雨刮胶条产品主图设计，功能/卖点/场景展示。', image: 'assets/ecom/58.jpg', tags: ['亚马逊', '产品主图'] },
+                    // 产品包装
+                    { id: 'pack1', subCat: 'ecom-pack', title: '智能POS包装设计', desc: '智能POS产品包装设计。', image: 'assets/ecom/55.jpg', tags: ['包装设计', 'POS'] },
+                    { id: 'pack2', subCat: 'ecom-pack', title: '配件包装设计', desc: '产品配件包装设计。', image: 'assets/ecom/56.jpg', tags: ['包装设计', '配件'] },
+                    // 品牌LOGO定制
+                    { id: 'logo-custom', subCat: 'ecom-logo', title: '品牌LOGO定制设计', desc: '品牌LOGO定制设计服务。', image: 'assets/ecom/57.jpg', tags: ['LOGO', '定制'] },
+                    // 线下展会物料
+                    { id: 'expo', subCat: 'ecom-expo', title: '展会物料设计', desc: '线下展会宣传物料设计。', image: 'assets/ecom/58.jpg', tags: ['展会', '物料'] },
+                    // 品牌主题壁纸
+                    { id: 'wallpaper', subCat: 'ecom-wallpaper', title: '品牌主题壁纸', desc: '品牌主题壁纸设计。', image: 'assets/ecom/59.jpg', tags: ['壁纸', '品牌主题'] }
+                ]
+            },
+            creative: {
+                name: '创意概念视觉',
+                subCategories: [
+                    { id: 'creative-ip', name: '个人IP形象系列', count: 3 },
+                    { id: 'creative-3d', name: '拟物化创意海报', count: 3 },
+                    { id: 'creative-ai', name: 'AI概念人物&场景', count: 4 },
+                    { id: 'creative-scene', name: '电商氛围场景', count: 3 },
+                    { id: 'creative-font', name: '字体版式设计', count: 2 }
+                ],
+                projects: [
+                    // 个人IP形象系列
+                    { id: 'ip-series1', subCat: 'creative-ip', title: '个人IP形象A', desc: '个人IP形象设计探索。', image: 'assets/other/60.jpg', tags: ['IP形象', '个人'] },
+                    { id: 'ip-series2', subCat: 'creative-ip', title: '个人IP形象B', desc: '个人IP形象设计探索。', image: 'assets/other/61.jpg', tags: ['IP形象', '个人'] },
+                    { id: 'ip-series3', subCat: 'creative-ip', title: '个人IP形象C', desc: '个人IP形象设计探索。', image: 'assets/other/62.jpg', tags: ['IP形象', '个人'] },
+                    // 拟物化创意海报
+                    { id: '3d-poster1', subCat: 'creative-3d', title: '嗨翻黄金周', desc: '3D拟物化海报设计。', image: 'assets/other/63.jpg', tags: ['3D设计', '拟物化'] },
+                    { id: '3d-poster2', subCat: 'creative-3d', title: '户外露营', desc: '3D拟物化海报设计。', image: 'assets/other/64.jpg', tags: ['3D设计', '拟物化'] },
+                    { id: '3d-poster3', subCat: 'creative-3d', title: '好工作野路子', desc: '3D拟物化海报设计。', image: 'assets/other/65.jpg', tags: ['3D设计', '拟物化'] },
+                    // AI概念人物&场景
+                    { id: 'ai-concept1', subCat: 'creative-ai', title: 'AI概念人物A', desc: 'AI生成概念人物设计。', image: 'assets/other/66.jpg', tags: ['AIGC', '人物'] },
+                    { id: 'ai-concept2', subCat: 'creative-ai', title: 'AI概念场景A', desc: 'AI生成概念场景设计。', image: 'assets/other/67.jpg', tags: ['AIGC', '场景'] },
+                    { id: 'ai-concept3', subCat: 'creative-ai', title: 'AI概念人物B', desc: 'AI生成概念人物设计。', image: 'assets/other/68.jpg', tags: ['AIGC', '人物'] },
+                    { id: 'ai-concept4', subCat: 'creative-ai', title: 'AI概念场景B', desc: 'AI生成概念场景设计。', image: 'assets/other/69.jpg', tags: ['AIGC', '场景'] },
+                    // 电商氛围场景
+                    { id: 'scene1', subCat: 'creative-scene', title: '电商氛围场景A', desc: '电商氛围场景设计。', image: 'assets/other/70.jpg', tags: ['电商', '场景'] },
+                    { id: 'scene2', subCat: 'creative-scene', title: '电商氛围场景B', desc: '电商氛围场景设计。', image: 'assets/other/71.jpg', tags: ['电商', '场景'] },
+                    { id: 'scene3', subCat: 'creative-scene', title: '电商氛围场景C', desc: '电商氛围场景设计。', image: 'assets/other/72.jpg', tags: ['电商', '场景'] },
+                    // 字体版式设计
+                    { id: 'font1', subCat: 'creative-font', title: '字体设计A', desc: '创意字体设计探索。', image: 'assets/other/73.jpg', tags: ['字体', '版式'] },
+                    { id: 'font2', subCat: 'creative-font', title: '字体设计B', desc: '创意字体设计探索。', image: 'assets/other/74.jpg', tags: ['字体', '版式'] }
+                ]
+            }
+        };
+
+        // ========== State ==========
+        let currentMainCategory = 'edu';
+        let currentSubCategory = 'all';
+
+        // ========== DOM Elements ==========
+        const mainCategoryNav = document.getElementById('mainCategoryNav');
+        const subCategoryNav = document.getElementById('subCategoryNav');
         const projectsGrid = document.getElementById('projectsGrid');
 
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tabBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+        // ========== Render Functions ==========
+        function renderSubCategories(mainCat) {
+            const data = categoryData[mainCat];
+            if (!data) return;
 
-                const filter = btn.dataset.filter;
-                let visibleCount = 0;
+            let html = `<button class="sub-cat-btn active" data-subcat="all">全部 <span class="count">${data.projects.length}</span></button>`;
+            
+            data.subCategories.forEach(sub => {
+                html += `<button class="sub-cat-btn" data-subcat="${sub.id}">${sub.name} <span class="count">${sub.count}</span></button>`;
+            });
 
-                projectCards.forEach((card, index) => {
-                    const shouldShow = filter === 'all' || card.dataset.category === filter;
-
-                    if (shouldShow) {
-                        card.style.display = '';
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(30px) scale(0.95)';
-                        setTimeout(() => {
-                            card.style.transition = 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0) scale(1)';
-                        }, visibleCount * 80);
-                        visibleCount++;
-                    } else {
-                        card.style.transition = 'all 0.3s ease';
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px) scale(0.95)';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
-                    }
+            subCategoryNav.innerHTML = html;
+            
+            // Add event listeners
+            subCategoryNav.querySelectorAll('.sub-cat-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    subCategoryNav.querySelectorAll('.sub-cat-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentSubCategory = btn.dataset.subcat;
+                    renderProjects(mainCat, currentSubCategory);
                 });
             });
-        });
+        }
+
+        function renderProjects(mainCat, subCat = 'all') {
+            const data = categoryData[mainCat];
+            if (!data) return;
+
+            const filteredProjects = subCat === 'all' 
+                ? data.projects 
+                : data.projects.filter(p => p.subCat === subCat);
+
+            let html = '';
+            filteredProjects.forEach((project, index) => {
+                html += `
+                    <a href="project-detail.html?id=${project.id}&cat=${mainCat}" class="project-card" style="animation-delay: ${index * 0.05}s">
+                        <div class="card-image">
+                            <img src="${project.image}" alt="${project.title}" loading="lazy">
+                        </div>
+                        <div class="card-overlay"></div>
+                        <div class="card-view">
+                            <div class="card-view-btn">查看详情 →</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-category">${data.name}</div>
+                            <h3 class="card-title">${project.title}</h3>
+                            <p class="card-desc">${project.desc}</p>
+                            <div class="card-tags">
+                                ${project.tags.map(tag => `<span class="card-tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </a>
+                `;
+            });
+
+            projectsGrid.innerHTML = html;
+
+            // Trigger animation
+            requestAnimationFrame(() => {
+                projectsGrid.querySelectorAll('.project-card').forEach(card => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+        }
+
+        // ========== Initialize ==========
+        function init() {
+            // Check URL params
+            const urlParams = new URLSearchParams(window.location.search);
+            const catParam = urlParams.get('cat');
+            
+            if (catParam && categoryData[catParam]) {
+                currentMainCategory = catParam;
+            }
+
+            // Set active main category
+            mainCategoryNav.querySelectorAll('.main-cat-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.category === currentMainCategory);
+            });
+
+            // Render sub categories and projects
+            renderSubCategories(currentMainCategory);
+            renderProjects(currentMainCategory);
+
+            // Main category click handlers
+            mainCategoryNav.querySelectorAll('.main-cat-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const cat = btn.dataset.category;
+                    if (cat === currentMainCategory) return;
+
+                    mainCategoryNav.querySelectorAll('.main-cat-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    currentMainCategory = cat;
+                    currentSubCategory = 'all';
+
+                    renderSubCategories(cat);
+                    renderProjects(cat);
+
+                    // Update URL
+                    history.pushState(null, '', `?cat=${cat}`);
+                });
+            });
+        }
+
+        init();
     </script>
 </body>
 </html>
