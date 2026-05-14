@@ -296,349 +296,90 @@
             color: var(--text-secondary);
         }
 
-        /* ========== Split Layout ========== */
-        .split-layout {
-            max-width: 1400px;
+        /* ========== Featured Grid ========== */
+        .featured-grid {
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            align-items: start;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
         }
 
-        /* ========== Left: Big Projects ========== */
-        .big-projects {
+        .featured-card {
             position: relative;
-        }
-
-        .big-project-card {
-            position: relative;
-            border-radius: var(--radius-lg);
+            border-radius: 12px;
             overflow: hidden;
             background: var(--bg-card);
             border: 1px solid rgba(139,92,246,0.1);
-            aspect-ratio: 4/3;
-            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
             cursor: pointer;
+            display: block;
+            text-decoration: none;
         }
 
-        .big-project-card:last-child {
-            margin-bottom: 0;
-        }
-
-        .big-project-card:hover {
-            transform: translateY(-6px);
+        .featured-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.35);
             border-color: rgba(139,92,246,0.25);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.35);
         }
 
-        .big-project-card .card-subtitle {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 16px 20px;
-            background: linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.7) 60%, transparent 100%);
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            letter-spacing: 0.5px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-        }
-
-        .big-project-card:hover .card-subtitle {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .big-project-card .card-bg {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .big-project-card .card-bg img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .big-project-card:hover .card-bg img {
-            transform: scale(1.1);
-        }
-
-        .big-project-card .card-overlay {
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 100%;
-            padding: 40px 32px 32px;
-            background: linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.7) 50%, transparent 100%);
-        }
-
-        .big-project-card .card-category {
-            display: inline-block;
-            padding: 6px 14px;
-            border-radius: 100px;
-            background: rgba(233,69,160,0.2);
-            font-family: var(--font-display);
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: var(--accent-magenta);
-            margin-bottom: 12px;
-        }
-
-        .big-project-card .card-title {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .big-project-card .card-desc {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .big-project-card .card-arrow {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: #fff;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: var(--transition);
-        }
-
-        .big-project-card:hover .card-arrow {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* ========== Right: Small Projects Grid ========== */
-        .small-projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .small-project-card {
+        .featured-card-image {
             position: relative;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            background: var(--bg-card);
-            border: 1px solid rgba(139,92,246,0.1);
-            aspect-ratio: 1/1;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .small-project-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(139,92,246,0.25);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .small-project-card .card-subtitle {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 14px 16px;
-            background: linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.7) 60%, transparent 100%);
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            letter-spacing: 0.3px;
-            opacity: 0;
-            transform: translateY(8px);
-            transition: all 0.3s ease;
-        }
-
-        .small-project-card:hover .card-subtitle {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .small-project-card .card-bg {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            width: 100%;
+            aspect-ratio: 16/9;
             overflow: hidden;
         }
 
-        .small-project-card .card-bg img {
+        .featured-card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.3s ease;
         }
 
-        .small-project-card:hover .card-bg img {
+        .featured-card:hover .featured-card-image img {
             transform: scale(1.08);
         }
 
-        .small-project-card .card-overlay {
+        .featured-card-overlay {
             position: absolute;
-            bottom: 0; left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(10,10,15,0.9) 0%, transparent 100%);
-            opacity: 0;
-            transform: translateY(10px);
-            transition: var(--transition);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 60px 16px 16px;
+            background: linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.7) 50%, transparent 100%);
         }
 
-        .small-project-card:hover .card-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .small-project-card .card-title {
+        .featured-card-category {
             font-family: var(--font-display);
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .small-project-card .card-category {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             color: var(--accent-cyan);
-            letter-spacing: 1px;
-        }
-
-        /* ========== Animated Project Showcase ========== */
-        .project-showcase {
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            background: var(--bg-card);
-            border: 1px solid rgba(139,92,246,0.1);
-            aspect-ratio: 16/10;
-        }
-
-        .project-showcase .slides-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .project-showcase .slide {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-
-        .project-showcase .slide.active {
-            opacity: 1;
-        }
-
-        .project-showcase .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .project-showcase .slide-overlay {
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 100%;
-            padding: 32px;
-            background: linear-gradient(to top, rgba(10,10,15,0.95) 0%, transparent 100%);
-        }
-
-        .project-showcase .slide-category {
-            display: inline-block;
-            padding: 6px 14px;
-            border-radius: 100px;
-            background: rgba(233,69,160,0.2);
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: var(--accent-magenta);
-            margin-bottom: 12px;
-        }
-
-        .project-showcase .slide-title {
-            font-family: var(--font-display);
-            font-size: 1.4rem;
-            font-weight: 700;
             margin-bottom: 6px;
         }
 
-        .project-showcase .slide-desc {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+        .featured-card-title {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
         }
 
-        .project-showcase .slide-nav {
-            position: absolute;
-            bottom: 24px;
-            right: 24px;
-            display: flex;
-            gap: 8px;
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .featured-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        .project-showcase .nav-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .project-showcase .nav-dot.active {
-            background: var(--accent-magenta);
-            transform: scale(1.2);
-        }
-
-        .project-showcase .nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            color: #fff;
-            cursor: pointer;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .project-showcase:hover .nav-arrow {
-            opacity: 1;
-        }
-
-        .project-showcase .nav-arrow.prev { left: 16px; }
-        .project-showcase .nav-arrow.next { right: 16px; }
-
-        .project-showcase .nav-arrow:hover {
-            background: rgba(255,255,255,0.2);
+        @media (max-width: 640px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* ========== Contact Simple ========== */
@@ -1125,89 +866,48 @@
         <div class="featured-works-header reveal">
             <div>
                 <div class="section-label">Featured Works</div>
-                <h2 class="featured-works-title">精选作品 <span class="thin">/ Portfolio</span></h2>
+                <h2 class="featured-works-title">精选作品 <span class="thin">/ Selected Works</span></h2>
             </div>
             <a href="projects.html" class="btn-secondary">查看全部 →</a>
         </div>
 
-        <div class="split-layout">
-            <!-- Left: Big Projects with Animation -->
-            <div class="big-projects">
-                <!-- Animated Showcase - 纯图片轮播 -->
-                <div class="project-showcase reveal" id="projectShowcase">
-                    <div class="slides-container">
-                        <div class="slide active" data-index="0">
-                            <img src="assets/showcase-1.jpg" alt="精选作品1">
-                        </div>
-                        <div class="slide" data-index="1">
-                            <img src="assets/showcase-2.jpg" alt="精选作品2">
-                        </div>
-                        <div class="slide" data-index="2">
-                            <img src="assets/showcase-3.jpg" alt="精选作品3">
-                        </div>
-                        <div class="slide" data-index="3">
-                            <img src="assets/showcase-4.jpg" alt="精选作品4">
-                        </div>
-                    </div>
-                    <div class="nav-arrow prev" onclick="prevSlide()">←</div>
-                    <div class="nav-arrow next" onclick="nextSlide()">→</div>
-                    <div class="slide-nav">
-                        <div class="nav-dot active" data-index="0" onclick="goToSlide(0)"></div>
-                        <div class="nav-dot" data-index="1" onclick="goToSlide(1)"></div>
-                        <div class="nav-dot" data-index="2" onclick="goToSlide(2)"></div>
-                        <div class="nav-dot" data-index="3" onclick="goToSlide(3)"></div>
-                    </div>
+        <div class="featured-grid">
+            <a href="project-detail.html?id=youman-brand&cat=edu" class="featured-card reveal" target="_blank">
+                <div class="featured-card-image">
+                    <img src="assets/showcase-1.jpg" alt="优漫品牌设计升级全案">
                 </div>
-
-                <!-- Big Project Card - 纯图片 -->
-                <a href="project-detail.html?id=youman-ip&cat=edu" class="big-project-card reveal">
-                    <div class="card-bg">
-                        <img src="assets/edu/07.jpg" alt="U仔IP形象设计">
-                    </div>
-                    <div class="card-subtitle">IP形象设计 | 3D建模</div>
-                    <div class="card-arrow">→</div>
-                </a>
-            </div>
-
-            <!-- Right: Small Projects Grid - 纯图片 -->
-            <div class="small-projects-grid">
-                <a href="project-detail.html?id=youman-ai&cat=edu" class="small-project-card reveal">
-                    <div class="card-bg">
-                        <img src="assets/edu/30.jpg" alt="AIGC节气海报">
-                    </div>
-                    <div class="card-subtitle">AIGC创意 | 节气海报</div>
-                </a>
-                <a href="project-detail.html?id=youman-web&cat=edu" class="small-project-card reveal">
-                    <div class="card-bg">
-                        <img src="assets/edu/34.jpg" alt="官网设计">
-                    </div>
-                    <div class="card-subtitle">Web设计 | 官网视觉</div>
-                </a>
-                <a href="project-detail.html?id=profilm-product&cat=auto" class="small-project-card reveal">
-                    <div class="card-bg">
-                        <img src="assets/auto/44.jpg" alt="浦诺菲产品海报">
-                    </div>
-                    <div class="card-subtitle">产品海报 | 汽车膜</div>
-                </a>
-                <a href="project-detail.html?id=wanshun&cat=auto" class="small-project-card reveal">
-                    <div class="card-bg">
-                        <img src="assets/auto/46.jpg" alt="万顺新材汽车膜">
-                    </div>
-                    <div class="card-subtitle">品牌视觉 | 汽车膜</div>
-                </a>
-                <a href="project-detail.html?id=chando-promo&cat=ecom" class="small-project-card reveal">
-                    <div class="card-bg">
-                        <img src="assets/ecom/54.jpg" alt="自然堂年中促销">
-                    </div>
-                    <div class="card-subtitle">电商视觉 | 促销设计</div>
-                </a>
-                <a href="project-detail.html?id=amazon&cat=ecom" class="small-project-card reveal">
-                    <div class="card-bg">
-                        <img src="assets/ecom/58.jpg" alt="亚马逊运营主图">
-                    </div>
-                    <div class="card-subtitle">跨境电商 | 主图设计</div>
-                </a>
-            </div>
+                <div class="featured-card-overlay">
+                    <div class="featured-card-category">教育品牌</div>
+                    <h3 class="featured-card-title">优漫品牌设计升级全案</h3>
+                </div>
+            </a>
+            <a href="project-detail.html?id=profilm-brand&cat=auto" class="featured-card reveal" target="_blank">
+                <div class="featured-card-image">
+                    <img src="assets/showcase-2.jpg" alt="浦诺菲尊膜品牌长图文">
+                </div>
+                <div class="featured-card-overlay">
+                    <div class="featured-card-category">汽车品牌</div>
+                    <h3 class="featured-card-title">浦诺菲尊膜品牌长图文</h3>
+                </div>
+            </a>
+            <a href="project-detail.html?id=chando-promo&cat=ecom" class="featured-card reveal" target="_blank">
+                <div class="featured-card-image">
+                    <img src="assets/showcase-3.jpg" alt="自然堂电商视觉设计">
+                </div>
+                <div class="featured-card-overlay">
+                    <div class="featured-card-category">美妆护肤</div>
+                    <h3 class="featured-card-title">自然堂电商视觉设计</h3>
+                </div>
+            </a>
+            <a href="project-detail.html?id=youman-ai&cat=edu" class="featured-card reveal" target="_blank">
+                <div class="featured-card-image">
+                    <img src="assets/showcase-4.jpg" alt="AIGC创意节气海报">
+                </div>
+                <div class="featured-card-overlay">
+                    <div class="featured-card-category">AIGC创意</div>
+                    <h3 class="featured-card-title">AIGC创意节气海报</h3>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -1340,48 +1040,6 @@
             heroCover.addEventListener('mousemove', handleMouseMove);
             heroCover.addEventListener('mouseleave', handleMouseLeave);
         })();
-
-        // ========== Project Showcase Slider ==========
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.project-showcase .slide');
-        const dots = document.querySelectorAll('.project-showcase .nav-dot');
-        const totalSlides = slides.length;
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-            currentSlide = index;
-        }
-
-        function nextSlide() {
-            showSlide((currentSlide + 1) % totalSlides);
-        }
-
-        function prevSlide() {
-            showSlide((currentSlide - 1 + totalSlides) % totalSlides);
-        }
-
-        function goToSlide(index) {
-            showSlide(index);
-        }
-
-        // Auto-play slider
-        let autoPlayInterval = setInterval(nextSlide, 5000);
-
-        // Pause on hover
-        const showcase = document.getElementById('projectShowcase');
-        if (showcase) {
-            showcase.addEventListener('mouseenter', () => {
-                clearInterval(autoPlayInterval);
-            });
-            showcase.addEventListener('mouseleave', () => {
-                autoPlayInterval = setInterval(nextSlide, 5000);
-            });
-        }
 
         // ========== Smooth Scroll ==========
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
