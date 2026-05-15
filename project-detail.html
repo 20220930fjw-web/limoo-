@@ -942,7 +942,7 @@
             document.title = project.title + ' — HUGO | 冯江威品牌设计作品集';
 
             // Render content
-            const contentHTML = renderRegularProjectPage(project, id);
+            let contentHTML = renderRegularProjectPage(project, id);
 
             // Add related projects and navigation
             contentHTML += renderRelatedProjects(id, project.category);
