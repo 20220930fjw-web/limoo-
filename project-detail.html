@@ -461,15 +461,6 @@
             color: #0066FF;
         }
 
-        /* ========== 项目特定样式 ========== */
-        .youman-brand-page {
-            display: none;
-        }
-
-        .youman-brand-page.active {
-            display: block;
-        }
-
         /* ========== 响应式 ========== */
         @media (max-width: 1920px) {
             .project-page {
@@ -801,71 +792,6 @@
                 .map(([id, _]) => id);
         }
 
-        // ========== Render Youman Brand Page ==========
-        function renderYoumanBrandPage() {
-            const project = projectsData['youman-brand'];
-
-            return `
-                <!-- 顶部标题区 -->
-                <div class="project-header">
-                    <h1 class="project-main-title">${project.title}</h1>
-                    <p class="project-meta-line">${project.year}｜${project.role}｜${project.categoryName}</p>
-                </div>
-
-                <!-- 项目信息区 -->
-                <div class="project-info-row">
-                    <div class="info-card">
-                        <div class="info-icon">&#128100;</div>
-                        <div class="info-label">客户</div>
-                        <div class="info-value">${project.client}</div>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-icon">&#128197;</div>
-                        <div class="info-label">时间</div>
-                        <div class="info-value">${project.year}</div>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-icon">&#127991;</div>
-                        <div class="info-label">类型</div>
-                        <div class="info-value">品牌全案</div>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-icon">&#127912;</div>
-                        <div class="info-label">角色</div>
-                        <div class="info-value">${project.role}</div>
-                    </div>
-                </div>
-
-                <!-- 内容区域 -->
-                <div class="project-content">
-                    <div class="content-section">
-                        <h2 class="section-title">项目概述</h2>
-                        <p class="section-text">${project.description}</p>
-                    </div>
-                    <div class="content-section">
-                        <h2 class="section-title">设计亮点</h2>
-                        <ul class="highlight-list">
-                            ${project.highlights.map(h => `
-                                <li><span class="highlight-icon">&#10022;</span> ${h}</li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 作品画廊 -->
-                <div class="gallery-section">
-                    <h2 class="section-title">作品展示</h2>
-                    <div class="gallery-grid">
-                        ${project.images.map((img, i) => `
-                            <div class="gallery-item" onclick="openLightbox('${img}')">
-                                <img src="${img}" alt="${project.title} - ${i + 1}" loading="lazy">
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
-
         // ========== Render Regular Project Page ==========
         function renderRegularProjectPage(project, id) {
             const galleryHTML = project.galleryType === 'longform'
@@ -1015,13 +941,8 @@
             // Update page title
             document.title = project.title + ' — HUGO | 冯江威品牌设计作品集';
 
-            // Render content based on project type
-            let contentHTML = '';
-            if (id === 'youman-brand') {
-                contentHTML = renderYoumanBrandPage();
-            } else {
-                contentHTML = renderRegularProjectPage(project, id);
-            }
+            // Render content
+            const contentHTML = renderRegularProjectPage(project, id);
 
             // Add related projects and navigation
             contentHTML += renderRelatedProjects(id, project.category);
