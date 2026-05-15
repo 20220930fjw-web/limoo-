@@ -1,203 +1,249 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>项目详情 — HUGO | 冯江威品牌设计作品集</title>
     <meta name="description" content="冯江威 (HUGO) 设计项目详情，查看品牌设计项目的完整介绍、设计过程和作品展示。">
-    <link rel="preconnect" href="https://fonts.loli.net" crossorigin>
-    <link href="https://fonts.loli.net/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/common.css">
     <style>
-        /* ========== Detail Hero ========== */
-        .detail-hero {
-            position: relative;
-            padding: 120px 48px 0;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* ========== 基础设置 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .detail-breadcrumb {
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        /* ========== 页面容器 ========== */
+        .project-page {
+            width: 1920px;
+            min-height: 1080px;
+            margin: 0 auto;
+            background: #ffffff;
+        }
+
+        /* ========== 导航栏 ========== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
+            justify-content: space-between;
+            padding: 20px 80px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #f0f0f0;
         }
 
-        .detail-breadcrumb a {
-            color: var(--text-secondary);
-            transition: var(--transition);
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
         }
 
-        .detail-breadcrumb a:hover {
-            color: var(--accent-magenta);
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
         }
 
-        .detail-breadcrumb .sep {
-            color: var(--text-muted);
+        .nav-links a {
+            font-size: 14px;
+            color: #666666;
+            text-decoration: none;
+            transition: color 0.3s;
         }
 
-        .detail-breadcrumb .current {
-            color: var(--text-primary);
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0066FF;
         }
 
-        /* ========== Project Main Image ========== */
-        .detail-main-image {
-            width: 100%;
-            aspect-ratio: 16/9;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            margin-bottom: 48px;
-            border: 1px solid rgba(139, 92, 246, 0.1);
+        /* ========== 顶部标题区 ========== */
+        .project-header {
+            padding: 120px 80px 40px;
+            background: #ffffff;
         }
 
-        .detail-main-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .project-main-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 16px;
+            letter-spacing: -0.5px;
         }
 
-        /* ========== Project Info Bar ========== */
-        .detail-info-bar {
+        .project-meta-line {
+            font-size: 16px;
+            color: #666666;
+            margin: 0;
+        }
+
+        /* ========== 项目信息区 ========== */
+        .project-info-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
-            margin-bottom: 48px;
-            padding: 32px;
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(139, 92, 246, 0.1);
+            padding: 40px 80px;
+            background: #ffffff;
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
         }
 
-        .info-item {
+        .info-card {
             text-align: center;
+            padding: 24px;
+        }
+
+        .info-icon {
+            font-size: 24px;
+            margin-bottom: 12px;
         }
 
         .info-label {
-            font-family: var(--font-display);
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 2px;
+            font-size: 12px;
+            color: #999999;
             text-transform: uppercase;
-            color: var(--accent-cyan);
+            letter-spacing: 1px;
             margin-bottom: 8px;
         }
 
         .info-value {
-            font-family: var(--font-display);
-            font-size: 1rem;
+            font-size: 16px;
             font-weight: 600;
-            color: var(--text-primary);
+            color: #1a1a1a;
         }
 
-        /* ========== Project Content ========== */
-        .detail-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 48px;
+        /* ========== 内容区域 ========== */
+        .project-content {
+            padding: 60px 80px;
+            background: #ffffff;
         }
 
-        .detail-section {
-            margin-bottom: 64px;
+        .content-section {
+            margin-bottom: 48px;
         }
 
-        .detail-section-title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
+        .section-title {
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+            color: #1a1a1a;
+            margin: 0 0 24px;
+            padding-left: 40px;
         }
 
-        .detail-description {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 2;
-            max-width: 800px;
+        .section-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333333;
+            margin: 0;
+            padding: 0 40px;
         }
 
-        /* ========== Highlights ========== */
-        .highlights-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-top: 24px;
+        /* ========== 设计亮点列表 ========== */
+        .highlight-list {
+            list-style: none;
+            padding: 0 40px;
+            margin: 0;
         }
 
-        .highlight-item {
+        .highlight-list li {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 12px;
-            padding: 16px 20px;
-            background: var(--bg-card);
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(139, 92, 246, 0.08);
+            padding: 12px 0;
+            font-size: 16px;
+            color: #333333;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .highlight-list li:last-child {
+            border-bottom: none;
         }
 
         .highlight-icon {
-            flex-shrink: 0;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--gradient-main);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            color: #fff;
-            margin-top: 2px;
+            color: #0066FF;
+            font-weight: 700;
         }
 
-        .highlight-text {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
+        /* ========== 作品画廊 ========== */
+        .gallery-section {
+            width: 1920px;
+            margin: 0 auto;
+            padding: 60px 80px;
+            background: #ffffff;
         }
 
-        /* ========== Image Gallery ========== */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 24px;
         }
 
-        /* ========== Longform Gallery (Vertical Long Images) ========== */
+        .gallery-item {
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f5f5f5;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ========== 长图画廊（用于VI展示） ========== */
         .longform-gallery {
             display: flex;
             flex-direction: column;
             gap: 32px;
-            max-width: 480px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
         .longform-item {
             position: relative;
-            border-radius: var(--radius-lg);
+            border-radius: 8px;
             overflow: hidden;
-            border: 1px solid rgba(139, 92, 246, 0.1);
-            transition: var(--transition);
+            background: #f5f5f5;
             cursor: pointer;
-            background: var(--bg-card);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .longform-item:hover {
-            border-color: rgba(139, 92, 246, 0.3);
             transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
         }
 
         .longform-item img {
             width: 100%;
             height: auto;
             display: block;
-            transition: var(--transition);
-        }
-
-        .longform-item:hover img {
-            transform: scale(1.01);
         }
 
         .longform-number {
@@ -206,270 +252,24 @@
             left: 16px;
             width: 36px;
             height: 36px;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(139, 92, 246, 0.3);
+            background: rgba(0, 102, 255, 0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: var(--font-display);
-            font-size: 0.85rem;
+            font-size: 14px;
             font-weight: 600;
-            color: var(--accent-cyan);
-        }
-
-        /* ========== Poster Gallery (Vertical) ========== */
-        .poster-gallery {
-            display: flex;
-            gap: 24px;
-            overflow-x: auto;
-            padding-bottom: 16px;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .poster-gallery::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .poster-gallery::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.03);
-            border-radius: 3px;
-        }
-
-        .poster-gallery::-webkit-scrollbar-thumb {
-            background: rgba(139, 92, 246, 0.3);
-            border-radius: 3px;
-        }
-
-        .poster-gallery::-webkit-scrollbar-thumb:hover {
-            background: rgba(139, 92, 246, 0.5);
-        }
-
-        .poster-item {
-            flex-shrink: 0;
-            width: 320px;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            border: 1px solid rgba(139, 92, 246, 0.1);
-            transition: var(--transition);
-            cursor: pointer;
-            scroll-snap-align: start;
-        }
-
-        .poster-item:hover {
-            border-color: rgba(139, 92, 246, 0.3);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        .poster-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .poster-item:hover img {
-            transform: scale(1.02);
-        }
-
-        .poster-label {
-            padding: 12px 16px;
-            background: var(--bg-card);
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            text-align: center;
-        }
-
-        .gallery-item {
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            border: 1px solid rgba(139, 92, 246, 0.08);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-4px);
-            border-color: rgba(139, 92, 246, 0.3);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            aspect-ratio: 4/3;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .gallery-item.wide {
-            grid-column: span 2;
-        }
-
-        .gallery-item.tall {
-            grid-row: span 2;
-        }
-
-        /* ========== Related Projects ========== */
-        .related-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 48px 80px;
-        }
-
-        .related-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-            margin-top: 32px;
-        }
-
-        .related-card {
-            display: block;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            background: var(--bg-card);
-            border: 1px solid rgba(139, 92, 246, 0.1);
-            transition: var(--transition);
-        }
-
-        .related-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(139, 92, 246, 0.3);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .related-card .rc-image {
-            width: 100%;
-            aspect-ratio: 16/10;
-            overflow: hidden;
-        }
-
-        .related-card .rc-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .related-card:hover .rc-image img {
-            transform: scale(1.05);
-        }
-
-        .related-card .rc-content {
-            padding: 20px;
-        }
-
-        .related-card .rc-category {
-            font-family: var(--font-display);
-            font-size: 0.65rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent-cyan);
-            margin-bottom: 6px;
-        }
-
-        .related-card .rc-title {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-            transition: var(--transition);
-        }
-
-        .related-card:hover .rc-title {
-            color: var(--accent-magenta);
-        }
-
-        .related-card .rc-desc {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        /* ========== Prev / Next Navigation ========== */
-        .prev-next-nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 48px 80px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .pn-card {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 24px;
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(139, 92, 246, 0.1);
-            transition: var(--transition);
-        }
-
-        .pn-card:hover {
-            border-color: rgba(139, 92, 246, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .pn-card .pn-image {
-            flex-shrink: 0;
-            width: 80px;
-            height: 60px;
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-        }
-
-        .pn-card .pn-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .pn-card .pn-label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent-cyan);
-            margin-bottom: 4px;
-        }
-
-        .pn-card .pn-title {
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            transition: var(--transition);
-        }
-
-        .pn-card:hover .pn-title {
-            color: var(--accent-magenta);
-        }
-
-        .pn-card.next {
-            text-align: right;
-            flex-direction: row-reverse;
+            color: #fff;
         }
 
         /* ========== Lightbox ========== */
         .lightbox {
             display: none;
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(10, 10, 15, 0.95);
             backdrop-filter: blur(20px);
             z-index: 10000;
@@ -486,22 +286,201 @@
             max-width: 90%;
             max-height: 90vh;
             object-fit: contain;
-            border-radius: var(--radius-md);
+            border-radius: 8px;
         }
 
         .lightbox-close {
             position: absolute;
             top: 24px;
             right: 32px;
-            font-size: 2rem;
-            color: var(--text-primary);
+            font-size: 32px;
+            color: #ffffff;
             cursor: pointer;
             background: none;
             border: none;
             z-index: 10001;
         }
 
-        /* ========== Responsive ========== */
+        /* ========== 相关项目推荐 ========== */
+        .related-section {
+            padding: 60px 80px;
+            background: #fafafa;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 32px;
+        }
+
+        .related-card {
+            display: block;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .related-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .related-card .rc-image {
+            width: 100%;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+
+        .related-card .rc-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .related-card:hover .rc-image img {
+            transform: scale(1.05);
+        }
+
+        .related-card .rc-content {
+            padding: 20px;
+        }
+
+        .related-card .rc-category {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #0066FF;
+            margin-bottom: 6px;
+        }
+
+        .related-card .rc-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+
+        .related-card .rc-desc {
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* ========== 上一个/下一个导航 ========== */
+        .prev-next-nav {
+            padding: 40px 80px 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            background: #ffffff;
+        }
+
+        .pn-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 24px;
+            background: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #f0f0f0;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pn-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .pn-card .pn-image {
+            flex-shrink: 0;
+            width: 80px;
+            height: 60px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .pn-card .pn-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pn-card .pn-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #0066FF;
+            margin-bottom: 4px;
+        }
+
+        .pn-card .pn-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .pn-card.next {
+            text-align: right;
+            flex-direction: row-reverse;
+        }
+
+        /* ========== Footer ========== */
+        .footer {
+            padding: 40px 80px;
+            background: #1a1a1a;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #0066FF;
+        }
+
+        /* ========== 优漫蓝强调色 ========== */
+        .um-blue {
+            color: #0066FF;
+        }
+
+        /* ========== 项目特定样式 ========== */
+        .youman-brand-page {
+            display: none;
+        }
+
+        .youman-brand-page.active {
+            display: block;
+        }
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 1920px) {
+            .project-page {
+                width: 100%;
+            }
+
+            .gallery-section {
+                width: 100%;
+            }
+        }
+
         @media (max-width: 1024px) {
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -510,65 +489,51 @@
             .related-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .project-info-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            .detail-hero {
-                padding: 100px 24px 0;
+            .nav {
+                padding: 16px 24px;
             }
 
-            .detail-content {
-                padding: 0 24px;
+            .nav-links {
+                display: none;
             }
 
-            .related-section {
-                padding: 0 24px 60px;
+            .project-header,
+            .project-info-row,
+            .project-content,
+            .gallery-section,
+            .related-section,
+            .prev-next-nav,
+            .footer {
+                padding-left: 24px;
+                padding-right: 24px;
             }
 
-            .prev-next-nav {
-                padding: 0 24px 60px;
-                grid-template-columns: 1fr;
-            }
-
-            .detail-info-bar {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
-                padding: 24px;
-            }
-
-            .highlights-list {
-                grid-template-columns: 1fr;
+            .project-main-title {
+                font-size: 32px;
             }
 
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
 
-            .gallery-item.wide {
-                grid-column: span 1;
-            }
-
-            .gallery-item.tall {
-                grid-row: span 1;
-            }
-
             .related-grid {
                 grid-template-columns: 1fr;
             }
 
-            .detail-main-image {
-                aspect-ratio: 4/3;
+            .prev-next-nav {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-
-    <!-- Noise Overlay -->
-    <div class="noise-overlay"></div>
-
-    <!-- Cursor Glow -->
-    <div class="cursor-glow" id="cursorGlow"></div>
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
@@ -576,24 +541,9 @@
         <img src="" alt="Preview" id="lightboxImg">
     </div>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
-        <a href="index.html" onclick="closeMobileMenu()">首页</a>
-        <a href="projects.html" onclick="closeMobileMenu()">作品集</a>
-        <a href="about.html" onclick="closeMobileMenu()">关于我</a>
-        <a href="services.html" onclick="closeMobileMenu()">服务</a>
-        <a href="blog.html" onclick="closeMobileMenu()">博客</a>
-        <a href="index.html#contact" onclick="closeMobileMenu()">联系</a>
-    </div>
-
     <!-- Navigation -->
     <nav class="nav" id="navbar">
-        <a href="index.html" class="nav-logo">
-            <div class="nav-logo-media">
-                <video src="assets/logo.mp4" autoplay muted playsinline></video>
-            </div>
-        </a>
+        <a href="index.html" class="nav-logo">HUGO</a>
         <ul class="nav-links">
             <li><a href="index.html">首页</a></li>
             <li><a href="projects.html" class="active">作品集</a></li>
@@ -602,100 +552,61 @@
             <li><a href="blog.html">博客</a></li>
             <li><a href="index.html#contact">联系</a></li>
         </ul>
-        <div class="nav-menu-btn" id="menuBtn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
     </nav>
 
-    <!-- Detail Hero -->
-    <section class="detail-hero">
-        <div class="detail-breadcrumb reveal">
-            <a href="index.html">首页</a>
-            <span class="sep">/</span>
-            <a href="projects.html">作品集</a>
-            <span class="sep">/</span>
-            <span class="current" id="breadcrumbTitle">项目详情</span>
-        </div>
-        <div class="detail-main-image reveal" id="mainImage">
-            <img src="" alt="Project" id="mainImg">
-        </div>
-    </section>
-
-    <!-- Project Info -->
-    <section class="detail-content">
-        <div class="detail-info-bar reveal" id="infoBar">
-            <div class="info-item">
-                <div class="info-label">客户</div>
-                <div class="info-value" id="infoClient">-</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">时间</div>
-                <div class="info-value" id="infoYear">-</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">类型</div>
-                <div class="info-value" id="infoCategory">-</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">角色</div>
-                <div class="info-value" id="infoRole">-</div>
-            </div>
-        </div>
-
-        <!-- Description -->
-        <div class="detail-section reveal">
-            <h2 class="detail-section-title">项目描述</h2>
-            <div class="detail-description" id="projectDesc"></div>
-        </div>
-
-        <!-- Highlights -->
-        <div class="detail-section reveal">
-            <h2 class="detail-section-title">项目亮点</h2>
-            <div class="highlights-list" id="highlightsList"></div>
-        </div>
-
-        <!-- Gallery -->
-        <div class="detail-section reveal">
-            <h2 class="detail-section-title">作品画廊</h2>
-            <div class="gallery-grid" id="galleryGrid"></div>
-        </div>
-    </section>
-
-    <!-- Related Projects -->
-    <section class="related-section">
-        <div class="detail-section-title reveal">相关项目推荐</div>
-        <div class="related-grid" id="relatedGrid"></div>
-    </section>
-
-    <!-- Prev / Next -->
-    <div class="prev-next-nav" id="prevNextNav"></div>
+    <!-- 动态内容区域 -->
+    <div id="dynamicContent"></div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-left">
-            <span class="brand">HUGO</span> &nbsp;|&nbsp; 設計作品集 &nbsp;|&nbsp; Copyright&copy; 2024 冯江威 All rights reserved.
+            <span style="font-weight: 700;">HUGO</span> &nbsp;|&nbsp; 設計作品集 &nbsp;|&nbsp; Copyright&copy; 2024 冯江威 All rights reserved.
         </div>
         <div class="footer-right">
             <a href="index.html">返回首页</a>
         </div>
     </footer>
 
-    <script src="assets/js/common.js"></script>
     <script>
         // ========== Project Data ==========
         const projectsData = {
             'youman-brand': {
-                title: '优漫教育品牌设计',
+                title: '优漫教育｜教育品牌全案',
                 category: 'edu',
                 categoryName: '教育品牌',
                 client: '优漫教育',
                 year: '2024',
                 role: '品牌设计师',
                 description: '为优漫教育打造全新品牌视觉识别系统，涵盖LOGO设计、品牌色彩体系、字体规范、IP形象设计及全套VI应用规范。设计理念以"激发创造力"为核心，通过明快的色彩搭配和现代感的图形语言，传递教育品牌的活力与专业。整套VI系统包含办公用品、宣传物料、环境导视等20余项应用设计，确保品牌在各个触点保持一致的视觉形象。',
-                images: ['assets/edu/youman-cover.png', 'assets/edu/youman-edu-1.jpg', 'assets/edu/youman-edu-2.jpg', 'assets/edu/youman-edu-3.jpg', 'assets/edu/youman-edu-4.jpg'],
-                highlights: ['全新LOGO设计，融合"U"字母与书本图形', '完整品牌色彩体系与字体规范', '20余项VI应用设计', '品牌手册编制与规范输出']
+                images: [
+                    // LOGO展示
+                    'assets/edu/youman-cover.png',
+                    'assets/edu/youman-edu-1.jpg',
+                    'assets/edu/youman-edu-2.jpg',
+                    // IP形象
+                    'assets/edu/07.jpg',
+                    'assets/edu/08.jpg',
+                    'assets/edu/10.jpg',
+                    // VI应用
+                    'assets/edu/youman-edu-3.jpg',
+                    'assets/edu/youman-edu-4.jpg',
+                    'assets/edu/03.jpg',
+                    // 包装设计
+                    'assets/edu/04.jpg',
+                    'assets/edu/05.jpg',
+                    'assets/edu/06.jpg',
+                    // 海报与线下
+                    'assets/edu/25.jpg',
+                    'assets/edu/26.jpg',
+                    'assets/edu/27.jpg'
+                ],
+                highlights: [
+                    '全新LOGO设计，融合教育理念与现代美学',
+                    'IP吉祥物"U仔"形象，增强品牌亲和力',
+                    '完整VI应用规范，确保品牌一致性',
+                    '品牌色彩体系，传递专业与活力'
+                ],
+                galleryType: 'grid'
             },
             'youman-ip': {
                 title: 'U仔IP形象设计',
@@ -877,132 +788,186 @@
             }
         };
 
-        // ========== Category Map ==========
-        const categoryMap = {
-            'edu': '教育品牌',
-            'auto': '汽车品牌',
-            'ecom': '电商品牌',
-            'other': '其他项目'
-        };
+        // ========== Get URL Param ==========
+        function getUrlParam(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
 
-        // ========== Get Project IDs by Category ==========
+        // ========== Get Projects by Category ==========
         function getProjectsByCategory(cat) {
             return Object.entries(projectsData)
                 .filter(([_, p]) => p.category === cat)
                 .map(([id, _]) => id);
         }
 
-        // ========== Render Project Detail ==========
-        function renderProject() {
-            const id = getUrlParam('id');
-            const project = projectsData[id];
+        // ========== Render Youman Brand Page ==========
+        function renderYoumanBrandPage() {
+            const project = projectsData['youman-brand'];
 
-            if (!project) {
-                document.getElementById('mainImg').src = 'assets/edu/03.jpg';
-                document.getElementById('breadcrumbTitle').textContent = '项目未找到';
-                document.getElementById('infoClient').textContent = '-';
-                document.getElementById('infoYear').textContent = '-';
-                document.getElementById('infoCategory').textContent = '-';
-                document.getElementById('infoRole').textContent = '-';
-                document.getElementById('projectDesc').textContent = '未找到对应的项目信息，请返回作品集页面查看。';
-                return;
-            }
-
-            // Update page title
-            document.title = project.title + ' — HUGO | 冯江威品牌设计作品集';
-
-            // Breadcrumb
-            document.getElementById('breadcrumbTitle').textContent = project.title;
-
-            // Main image
-            document.getElementById('mainImg').src = project.images[0];
-            document.getElementById('mainImg').alt = project.title;
-
-            // Info bar
-            document.getElementById('infoClient').textContent = project.client;
-            document.getElementById('infoYear').textContent = project.year;
-            document.getElementById('infoCategory').textContent = project.categoryName;
-            document.getElementById('infoRole').textContent = project.role;
-
-            // Description
-            document.getElementById('projectDesc').textContent = project.description;
-
-            // Highlights
-            const highlightsList = document.getElementById('highlightsList');
-            highlightsList.innerHTML = project.highlights.map(h => `
-                <div class="highlight-item">
-                    <div class="highlight-icon">&#10003;</div>
-                    <div class="highlight-text">${h}</div>
+            return `
+                <!-- 顶部标题区 -->
+                <div class="project-header">
+                    <h1 class="project-main-title">${project.title}</h1>
+                    <p class="project-meta-line">${project.year}｜${project.role}｜${project.categoryName}</p>
                 </div>
-            `).join('');
 
-            // Gallery
-            const galleryGrid = document.getElementById('galleryGrid');
-            const gallerySection = galleryGrid.parentElement;
+                <!-- 项目信息区 -->
+                <div class="project-info-row">
+                    <div class="info-card">
+                        <div class="info-icon">&#128100;</div>
+                        <div class="info-label">客户</div>
+                        <div class="info-value">${project.client}</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">&#128197;</div>
+                        <div class="info-label">时间</div>
+                        <div class="info-value">${project.year}</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">&#127991;</div>
+                        <div class="info-label">类型</div>
+                        <div class="info-value">品牌全案</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">&#127912;</div>
+                        <div class="info-label">角色</div>
+                        <div class="info-value">${project.role}</div>
+                    </div>
+                </div>
 
-            if (project.galleryType === 'longform') {
-                // Longform gallery for vertical long images (1080x2339)
-                galleryGrid.className = 'longform-gallery';
-                galleryGrid.innerHTML = project.images.map((img, i) => {
-                    return `<div class="longform-item" onclick="openLightbox('${img}')">
+                <!-- 内容区域 -->
+                <div class="project-content">
+                    <div class="content-section">
+                        <h2 class="section-title">项目概述</h2>
+                        <p class="section-text">${project.description}</p>
+                    </div>
+                    <div class="content-section">
+                        <h2 class="section-title">设计亮点</h2>
+                        <ul class="highlight-list">
+                            ${project.highlights.map(h => `
+                                <li><span class="highlight-icon">&#10022;</span> ${h}</li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 作品画廊 -->
+                <div class="gallery-section">
+                    <h2 class="section-title">作品展示</h2>
+                    <div class="gallery-grid">
+                        ${project.images.map((img, i) => `
+                            <div class="gallery-item" onclick="openLightbox('${img}')">
+                                <img src="${img}" alt="${project.title} - ${i + 1}" loading="lazy">
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // ========== Render Regular Project Page ==========
+        function renderRegularProjectPage(project, id) {
+            const galleryHTML = project.galleryType === 'longform'
+                ? `<div class="longform-gallery">${project.images.map((img, i) => `
+                    <div class="longform-item" onclick="openLightbox('${img}')">
                         <img src="${img}" alt="${project.title} - ${i + 1}" loading="lazy">
                         <div class="longform-number">${String(i + 1).padStart(2, '0')}</div>
-                    </div>`;
-                }).join('');
-            } else if (project.galleryType === 'poster' && project.posterImages) {
-                // Poster gallery for vertical posters
-                const posterLabels = ['实力 有认证', '守护 有答案', '颜值 有担当'];
-                galleryGrid.className = 'poster-gallery';
-                galleryGrid.innerHTML = project.posterImages.map((img, i) => {
-                    return `<div class="poster-item" onclick="openLightbox('${img}')">
-                        <img src="${img}" alt="${project.title} - ${posterLabels[i] || ''}" loading="lazy">
-                        <div class="poster-label">${posterLabels[i] || '海报 ' + (i + 1)}</div>
-                    </div>`;
-                }).join('');
-
-                // Add more images section below poster gallery
-                const moreImages = project.images.filter(img => !project.posterImages.includes(img));
-                if (moreImages.length > 0) {
-                    const moreSection = document.createElement('div');
-                    moreSection.className = 'detail-section reveal';
-                    moreSection.style.marginTop = '48px';
-                    moreSection.innerHTML = `<h2 class="detail-section-title">更多作品</h2><div class="gallery-grid">${moreImages.map((img, i) => {
-                        return `<div class="gallery-item" onclick="openLightbox('${img}')">
-                            <img src="${img}" alt="${project.title} - 更多${i + 1}" loading="lazy">
-                        </div>`;
-                    }).join('')}</div>`;
-                    gallerySection.after(moreSection);
-                }
-            } else {
-                galleryGrid.className = 'gallery-grid';
-                galleryGrid.innerHTML = project.images.map((img, i) => {
-                    let cls = '';
-                    if (i === 0) cls = 'wide';
-                    return `<div class="gallery-item ${cls}" onclick="openLightbox('${img}')">
-                        <img src="${img}" alt="${project.title} - ${i + 1}" loading="lazy">
-                    </div>`;
-                }).join('');
-            }
-
-            // Related projects
-            const relatedIds = getProjectsByCategory(project.category).filter(pid => pid !== id).slice(0, 3);
-            const relatedGrid = document.getElementById('relatedGrid');
-            relatedGrid.innerHTML = relatedIds.map(rid => {
-                const rp = projectsData[rid];
-                return `<a href="project-detail.html?id=${rid}&cat=${rp.category}" class="related-card">
-                    <div class="rc-image"><img src="${rp.images[0]}" alt="${rp.title}" loading="lazy"></div>
-                    <div class="rc-content">
-                        <div class="rc-category">${rp.categoryName}</div>
-                        <h3 class="rc-title">${rp.title}</h3>
-                        <p class="rc-desc">${rp.description.substring(0, 60)}...</p>
                     </div>
-                </a>`;
-            }).join('');
+                `).join('')}</div>`
+                : `<div class="gallery-grid">${project.images.map((img, i) => `
+                    <div class="gallery-item" onclick="openLightbox('${img}')">
+                        <img src="${img}" alt="${project.title} - ${i + 1}" loading="lazy">
+                    </div>
+                `).join('')}</div>`;
 
-            // Prev / Next
+            return `
+                <!-- 顶部标题区 -->
+                <div class="project-header">
+                    <h1 class="project-main-title">${project.title}</h1>
+                    <p class="project-meta-line">${project.year}｜${project.role}｜${project.categoryName}</p>
+                </div>
+
+                <!-- 项目信息区 -->
+                <div class="project-info-row">
+                    <div class="info-card">
+                        <div class="info-icon">&#128100;</div>
+                        <div class="info-label">客户</div>
+                        <div class="info-value">${project.client}</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">&#128197;</div>
+                        <div class="info-label">时间</div>
+                        <div class="info-value">${project.year}</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">&#127991;</div>
+                        <div class="info-label">类型</div>
+                        <div class="info-value">${project.categoryName}</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">&#127912;</div>
+                        <div class="info-label">角色</div>
+                        <div class="info-value">${project.role}</div>
+                    </div>
+                </div>
+
+                <!-- 内容区域 -->
+                <div class="project-content">
+                    <div class="content-section">
+                        <h2 class="section-title">项目描述</h2>
+                        <p class="section-text">${project.description}</p>
+                    </div>
+                    <div class="content-section">
+                        <h2 class="section-title">项目亮点</h2>
+                        <ul class="highlight-list">
+                            ${project.highlights.map(h => `
+                                <li><span class="highlight-icon">&#10022;</span> ${h}</li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 作品画廊 -->
+                <div class="gallery-section">
+                    <h2 class="section-title">作品展示</h2>
+                    ${galleryHTML}
+                </div>
+            `;
+        }
+
+        // ========== Render Related Projects ==========
+        function renderRelatedProjects(currentId, category) {
+            const relatedIds = getProjectsByCategory(category).filter(pid => pid !== currentId).slice(0, 3);
+
+            if (relatedIds.length === 0) return '';
+
+            return `
+                <section class="related-section">
+                    <h2 class="section-title" style="padding-left: 0;">相关项目推荐</h2>
+                    <div class="related-grid">
+                        ${relatedIds.map(rid => {
+                            const rp = projectsData[rid];
+                            return `
+                                <a href="project-detail.html?id=${rid}&cat=${rp.category}" class="related-card">
+                                    <div class="rc-image"><img src="${rp.images[0]}" alt="${rp.title}" loading="lazy"></div>
+                                    <div class="rc-content">
+                                        <div class="rc-category">${rp.categoryName}</div>
+                                        <h3 class="rc-title">${rp.title}</h3>
+                                        <p class="rc-desc">${rp.description.substring(0, 60)}...</p>
+                                    </div>
+                                </a>
+                            `;
+                        }).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        // ========== Render Prev/Next Navigation ==========
+        function renderPrevNext(currentId) {
             const allIds = Object.keys(projectsData);
-            const currentIndex = allIds.indexOf(id);
-            const prevNextNav = document.getElementById('prevNextNav');
+            const currentIndex = allIds.indexOf(currentId);
             let pnHTML = '';
 
             if (currentIndex > 0) {
@@ -1029,7 +994,40 @@
                 </a>`;
             }
 
-            prevNextNav.innerHTML = pnHTML;
+            return pnHTML ? `<div class="prev-next-nav">${pnHTML}</div>` : '';
+        }
+
+        // ========== Render Project Detail ==========
+        function renderProject() {
+            const id = getUrlParam('id') || 'youman-brand';
+            const project = projectsData[id];
+
+            if (!project) {
+                document.getElementById('dynamicContent').innerHTML = `
+                    <div class="project-header">
+                        <h1 class="project-main-title">项目未找到</h1>
+                        <p class="project-meta-line">请返回作品集页面查看其他项目</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Update page title
+            document.title = project.title + ' — HUGO | 冯江威品牌设计作品集';
+
+            // Render content based on project type
+            let contentHTML = '';
+            if (id === 'youman-brand') {
+                contentHTML = renderYoumanBrandPage();
+            } else {
+                contentHTML = renderRegularProjectPage(project, id);
+            }
+
+            // Add related projects and navigation
+            contentHTML += renderRelatedProjects(id, project.category);
+            contentHTML += renderPrevNext(id);
+
+            document.getElementById('dynamicContent').innerHTML = contentHTML;
         }
 
         // ========== Lightbox ==========
